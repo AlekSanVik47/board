@@ -1,4 +1,4 @@
-package bozhko_project.advice;
+package bozhko_project.electronic_board.advice;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
