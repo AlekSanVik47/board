@@ -1,4 +1,4 @@
-port: ${PORT_TO_EXPOSE:8085}
+port: ${PORT_TO_EXPOSE:8081}
 
 logging:
   level:
