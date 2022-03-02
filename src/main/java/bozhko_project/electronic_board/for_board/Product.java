@@ -15,7 +15,7 @@ public class Product {
 	private Long id_Product;
 
 	@Column
-	private String product_name;
+	private String productName;
 
 	@Column
 	private String category;
