@@ -16,11 +16,11 @@ spring:
       matching-strategy: ant_path_matcher
   jackson:
     date-format: com.fasterxml.jackson.databind.util.ISO8601DateFormat
-datasource:
-  driver-class-name:com.mysql.cj.jdbc.Driver
-url: jdbc:mysql://localhost:3306/electronic_board_db?currentSchema=electronic_board
-  username: phpadmin
-  password: QAz753
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/electronic_board_db?useSSL=false
+    username: phpadmin
+    password: QAz753
   #jpa.hibernate.ddl-auto: update
   jpa.database-platform: org.hibernate.dialect.MySQLDialect
 springfox:

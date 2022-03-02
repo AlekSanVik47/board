@@ -18,6 +18,7 @@ public class ErrorHandlingControllerAdvice extends ResponseEntityExceptionHandle
 	@ExceptionHandler(ValidationException.class)
 	@ResponseBody
 	ResponseEntity<Object> onValidationExceptionError(ValidationException e, WebRequest request) {
-		return handleExceptionInternal(e, Map.of("error", e.getMessage()), new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
+		//return handleExceptionInternal(e, Map.of("error", e.getMessage()), new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
+		return  null;
 	}
 }
