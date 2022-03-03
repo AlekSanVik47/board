@@ -2,7 +2,6 @@ package bozhko_project.electronic_board.configuration;
 
 import lombok.AllArgsConstructor;
 import org.flywaydb.core.Flyway;
-import org.flywaydb.core.api.MigrationInfo;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
@@ -10,16 +9,13 @@ import org.springframework.stereotype.Component;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.Arrays;
+
 
 @AllArgsConstructor
 @Component
 @Profile("!test")
 public class FlywayMigrationInitializer implements InitializingBean {
 	private final DataSource dataSource;
-
-
-
 	@Override
 	public void afterPropertiesSet() throws SQLException {
 		String schema;
@@ -34,4 +30,5 @@ public class FlywayMigrationInitializer implements InitializingBean {
 	}
 
 	}
+
 

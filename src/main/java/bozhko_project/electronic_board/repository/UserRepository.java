@@ -1,16 +1,14 @@
 package bozhko_project.electronic_board.repository;
 
 import bozhko_project.electronic_board.for_board.User;
-import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.domain.Example;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
-@Repository
-public interface UserRepository extends PagingAndSortingRepository<User, String> {
-    List<User> allUsers();
-    String findBySurname (String nick);
-    Map<String, Set<String>> getPhonesBySurname (String phone);
+public interface UserRepository extends JpaRepository<User, Long> {
+//    List<User> allUsers();
+
+//    List<User> findBySurname(String phone);
 }

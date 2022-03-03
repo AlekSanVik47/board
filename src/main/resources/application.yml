@@ -17,10 +17,12 @@ spring:
   jackson:
     date-format: com.fasterxml.jackson.databind.util.ISO8601DateFormat
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/electronic_board?allowPublicKeyRetrieval=true&useSSL=false
-    username: phpadmin
-    password: QAz753
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/postgres_db?currentSchema=postgres
+    username: postgres
+    password: postgres
+
+
   #jpa.hibernate.ddl-auto: update
   jpa.database-platform: org.hibernate.dialect.MySQLDialect
 springfox:

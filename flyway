@@ -1,0 +1,3 @@
+flyway.user=phpadmin
+flyway.password=QAz753
+flyway.schemas=electronic_board
