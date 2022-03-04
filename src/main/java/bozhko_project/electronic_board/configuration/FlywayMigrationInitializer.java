@@ -13,7 +13,7 @@ import java.sql.SQLException;
 
 @AllArgsConstructor
 @Component
-@Profile("!test")
+
 public class FlywayMigrationInitializer implements InitializingBean {
 	private final DataSource dataSource;
 	@Override

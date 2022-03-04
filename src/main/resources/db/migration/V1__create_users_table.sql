@@ -4,8 +4,8 @@ CREATE SEQUENCE hibernate_sequence
     MINVALUE 1
     MAXVALUE 9223372036854775807
     CACHE 1
-
-CREATE TABLE postgres.users (
+;
+CREATE TABLE users (
 	id integer NOT NULL,
 	nick varchar(100) NOT NULL,
 	surname varchar(100) NOT NULL,
