@@ -1,37 +1,44 @@
 package bozhko_project.electronic_board.service;
 
-import bozhko_project.electronic_board.dto.UserRegistrationDTO;
 import bozhko_project.electronic_board.for_board.User;
 import bozhko_project.electronic_board.mapper.UserMapper;
 import bozhko_project.electronic_board.repository.UserRepository;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 @Data
 public class UsersService {
-    @Autowired
+   // @Autowired
     private final UserRepository userRepository;
-    @Autowired
+    //@Autowired
     private final UserMapper userMapper;
-    private static final  int DEFAULT_PAGE_SIZE=10;
+    private static final int DEFAULT_PAGE_SIZE = 10;
 
-    public void getUserByPhone(String phone) {
-        userRepository.findUserByPhone(phone);
+    public String getUserByPhone(String phone) {
+        List<User> users = userRepository.findAll();
+        for (User u : users)
+            if (u.getPhone().equals(phone)) {
+               return userMapper.userRegDTO(userRepository.findUserByPhone(phone));
+            }
+        return toString();
+    }
+    public List<User> getRegisteredUsers(){
+        return userRepository.findAll();
     }
 
-    public List<UserRegistrationDTO> getRegisteredUsers (Integer limit){
-return userRepository.findAll(PageRequest.of(0, limit==null ? DEFAULT_PAGE_SIZE : limit)).stream()
-        .map(userMapper:: userRegDTO).collect(Collectors.toList());
-    }
-    /*public List<User> getRegUsers(String users){
+
+}
+/*    public List<User> getRegUsers(String users){
         return  userRepository.findAll();
     }*/
-}
+    /*public UserRegistrationDTO getUserByPhone (String phone){
+        return userMapper.userRegDTO(userRepository.findUserByPhone(phone).orElse(null));*/
+
+
+

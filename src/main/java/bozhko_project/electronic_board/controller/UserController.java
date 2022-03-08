@@ -27,17 +27,21 @@ private final UsersService usersService;
 
    @Operation(description = " Получение списка зарегестрированных пользователей")
     @GetMapping(
-            value = "/user/all-users/{reg-users}"
+            value = "/user/all-users/{users}"
     )
-    public ResponseEntity<UsersService> getUsers (
-           @PathVariable(name = "all-users") String users){
-       List<UserRegistrationDTO> allUsers = usersService.getRegisteredUsers(20);
-       return ResponseEntity.ok(usersService);
+    public ResponseEntity<List<User>> getUsers (
+           @PathVariable(name = "users")  String users){
+       List<User> allUsers = usersService.getRegisteredUsers();
+       return   ResponseEntity.ok(allUsers);
    }
    /* public ResponseEntity<List<User>> getAllUsers(
             @PathVariable(name = "all-users") String users) {
         List<User> allUsers = usersService.getRegUsers("all-users");
         return ResponseEntity.ok(allUsers);
    }*/
-
+   @Operation(description = " Получение пользователя по номеру телефона")
+   @GetMapping(value = "/user/by-phone")
+    public ResponseEntity getUserByPhone (@PathVariable String phone){
+       return  ResponseEntity.ok(usersService.getUserByPhone(phone));
+   }
 }
