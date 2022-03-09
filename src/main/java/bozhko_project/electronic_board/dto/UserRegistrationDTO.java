@@ -29,4 +29,7 @@ public class UserRegistrationDTO {
 
     @Schema(description = "Номер телефона")
     private String phone;
+
+    @Schema
+    private String password;
 }

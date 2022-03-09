@@ -8,7 +8,7 @@ import static org.mapstruct.ReportingPolicy.IGNORE;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = IGNORE)
 public interface UserMapper {
-    String userRegDTO(User entity);
+    String userRegDTO(String entity);
 
     User UserRegistrationRequestToUser(UserRegistrationDTO dto, Integer id, String phone);
 }

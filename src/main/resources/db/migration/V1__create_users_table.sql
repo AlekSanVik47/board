@@ -1,16 +1,20 @@
-CREATE SEQUENCE hibernate_sequence
-    INCREMENT 1
-    START 2
-    MINVALUE 1
-    MAXVALUE 9223372036854775807
-    CACHE 1
-;
-CREATE TABLE users (
-	id integer NOT NULL,
-	nick varchar(100) NOT NULL,
-	surname varchar(100) NOT NULL,
-	name varchar(100) NOT NULL,
-	phone varchar(100) NOT NULL,
-	email varchar(100) NULL,
-	CONSTRAINT users_pkey PRIMARY KEY (id)
+create table users (
+	id bigint not null,
+	nick varchar(100) not null, unique(nick),
+	surname varchar(100) not null,
+	name varchar(100) not null,
+	phone varchar(100) not null, unique(phone),
+	email varchar(100) not null, unique(email),
+	password varchar(100) not null, unique (password),
+	constraint users_pkey
+	primary key (id)
 );
+
+create sequence hibernate_sequence
+    start with 1
+    increment by 1
+    no minvalue
+    no maxvalue
+    cache 1;
+
+alter sequence hibernate_sequence owned by users.id;

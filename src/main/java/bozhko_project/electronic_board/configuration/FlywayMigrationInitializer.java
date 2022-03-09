@@ -23,6 +23,8 @@ public class FlywayMigrationInitializer implements InitializingBean {
 			schema = connection.getSchema();
 		}
 		Flyway flyway = Flyway.configure()
+//		Flyway.configure()
+//				.baselineOnMigrate(true)
 				.dataSource(dataSource)
 				.schemas(schema)
 				.load();

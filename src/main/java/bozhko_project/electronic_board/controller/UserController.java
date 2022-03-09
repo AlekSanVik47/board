@@ -1,6 +1,5 @@
 package bozhko_project.electronic_board.controller;
 
-import bozhko_project.electronic_board.dto.UserRegistrationDTO;
 import bozhko_project.electronic_board.for_board.User;
 import bozhko_project.electronic_board.service.UsersService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -40,8 +39,8 @@ private final UsersService usersService;
         return ResponseEntity.ok(allUsers);
    }*/
    @Operation(description = " Получение пользователя по номеру телефона")
-   @GetMapping(value = "/user/by-phone")
-    public ResponseEntity getUserByPhone (@PathVariable String phone){
+   @GetMapping(value = "/user/by-phone/{phone}")
+    public ResponseEntity <User> getUserByPhone (@PathVariable (name = "phone") String phone){
        return  ResponseEntity.ok(usersService.getUserByPhone(phone));
    }
 }

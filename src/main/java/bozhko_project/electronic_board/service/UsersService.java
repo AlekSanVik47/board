@@ -14,21 +14,16 @@ import java.util.List;
 @RequiredArgsConstructor
 @Data
 public class UsersService {
-   // @Autowired
+    @Autowired
     private final UserRepository userRepository;
-    //@Autowired
+    @Autowired
     private final UserMapper userMapper;
-    private static final int DEFAULT_PAGE_SIZE = 10;
 
-    public String getUserByPhone(String phone) {
-        List<User> users = userRepository.findAll();
-        for (User u : users)
-            if (u.getPhone().equals(phone)) {
-               return userMapper.userRegDTO(userRepository.findUserByPhone(phone));
-            }
-        return toString();
+    public User getUserByPhone(String phone) {
+        return getUserRepository().findUserByPhone(phone);
     }
-    public List<User> getRegisteredUsers(){
+
+    public List<User> getRegisteredUsers() {
         return userRepository.findAll();
     }
 
