@@ -1,5 +1,6 @@
 package bozhko_project.electronic_board.service;
 
+import bozhko_project.electronic_board.dto.UserUpdateDTO;
 import bozhko_project.electronic_board.for_board.User;
 import bozhko_project.electronic_board.mapper.UserMapper;
 import bozhko_project.electronic_board.repository.UserRepository;
@@ -14,20 +15,27 @@ import java.util.List;
 @RequiredArgsConstructor
 @Data
 public class UsersService {
-    @Autowired
-    private final UserRepository userRepository;
-    @Autowired
-    private final UserMapper userMapper;
+      @Autowired
+      private final UserRepository userRepository;
+      @Autowired
+      private final UserMapper userMapper;
 
-    public User getUserByPhone(String phone) {
-        return getUserRepository().findUserByPhone(phone);
-    }
+      public User getUserByPhone(String phone) {
+            return getUserRepository().findUserByPhone(phone);
+      }
 
-    public List<User> getRegisteredUsers() {
-        return userRepository.findAll();
-    }
+      public List<User> getRegisteredUsers() {
+            return userRepository.findAll();
+      }
 
 
+
+      public UserUpdateDTO userUpdate(Integer userId, UserUpdateDTO request){
+            User user = userMapper.updateUser(request, userId);
+            userRepository.save(user);
+            return userMapper.userToUserDTO(user);
+
+      }
 }
 /*    public List<User> getRegUsers(String users){
         return  userRepository.findAll();
