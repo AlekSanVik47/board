@@ -1,13 +1,16 @@
 package bozhko_project.electronic_board.for_board;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.ToString;
+import lombok.NoArgsConstructor;
+import bozhko_project.electronic_board.dto.Status;
 
 import javax.persistence.*;
 
 @Entity
 @Data
-@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 @Table (name="users")
 public class User {
 	@Id
@@ -17,7 +20,7 @@ public class User {
 	@Column(name = "nick")
 	private String nick;
 
-	@Column
+	@Column(name = "password")
 	private String password;
 
 	@Column
@@ -31,5 +34,8 @@ public class User {
 
 	@Column
 	private String phone;
+
+	@Column (name = "status", nullable = false)
+	private Status status;
 
 }

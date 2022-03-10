@@ -6,19 +6,10 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Schema(description = "Регистрация пользователя")
-public class UserRegistrationDTO {
-    @Schema(description = "Идентификатор")
-    private Long id;
-
+@Schema(description = "Запрос на обновления данных пользователя")
+public class UserUpdateDTO {
     @Schema(description = "Логин пользователя")
     private String nick;
-
-    @Schema(description = "Имя")
-    private String name;
-
-    @Schema(description = "Фамилия")
-    private String surname;
 
     @Schema(description = "Электронная почта")
     private String email;
@@ -26,7 +17,7 @@ public class UserRegistrationDTO {
     @Schema(description = "Номер телефона")
     private String phone;
 
-    @Schema(description = "пароль")
+    @Schema (description = "Пароль")
     private String password;
 
     @Schema (description = "статус")
