@@ -38,5 +38,6 @@ public class User {
 	@Column (name = "status", nullable = false)
 	private Status status;
 
+
 }
 

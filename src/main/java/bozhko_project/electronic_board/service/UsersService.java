@@ -18,42 +18,28 @@ import java.util.List;
 @RequiredArgsConstructor
 @Data
 public class UsersService {
-      @Autowired
-      private final UserRepository userRepository;
-      @Autowired
-      private final UserMapper userMapper;
+	@Autowired
+	private final UserRepository userRepository;
+	@Autowired
+	private final UserMapper userMapper;
 
-      public User getUserByPhone(String phone) {
-            return getUserRepository().findUserByPhone(phone);
-      }
+	public User getUserByPhone(String phone) {
+		return getUserRepository().findUserByPhone(phone);
+	}
 
-      public List<User> getRegisteredUsers() {
-            return userRepository.findAll();
-      }
+	public List<User> getRegisteredUsers() {
+		return userRepository.findAll();
+	}
 
 
+	public UserDTO userUpdate(Integer userId, UserUpdateDTO request) {
+		User user = userMapper.updateUser(request, userId);
+		userRepository.save(user);
+		return userMapper.userToUserDTO(user);
 
-      public UserUpdateDTO userUpdate(Integer userId, UserUpdateDTO request){
-            User user = userMapper.updateUser(request, userId, getCurrentUser().getSurname());
-            userRepository.save(user);
-            return userMapper.userToUserDTO(user);
-
-      }
-
-      private UserDTO getCurrentUser(){
-            SecurityContext securityContext = SecurityContextHolder.getContext();
-            String surname = securityContext.getAuthentication().getPrincipal().toString();
-            String name = securityContext.getAuthentication().getAuthorities().stream().findAny().get().getAuthority();
-            return new UserDTO(surname, name);
-      }
-
+	}
 
 }
-/*    public List<User> getRegUsers(String users){
-        return  userRepository.findAll();
-    }*/
-    /*public UserRegistrationDTO getUserByPhone (String phone){
-        return userMapper.userRegDTO(userRepository.findUserByPhone(phone).orElse(null));*/
 
 
 

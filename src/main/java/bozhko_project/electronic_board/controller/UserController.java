@@ -1,7 +1,10 @@
 package bozhko_project.electronic_board.controller;
 
+import bozhko_project.electronic_board.dto.UserDTO;
 import bozhko_project.electronic_board.dto.UserUpdateDTO;
 import bozhko_project.electronic_board.for_board.User;
+import bozhko_project.electronic_board.mapper.UserMapper;
+import bozhko_project.electronic_board.repository.UserRepository;
 import bozhko_project.electronic_board.service.UsersService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -25,6 +28,10 @@ import java.util.List;
 public class UserController {
 @Autowired
 private final UsersService usersService;
+@Autowired
+private final UserMapper userMapper;
+@Autowired
+private final UserRepository userRepository;
 
    @Operation(description = " Получение списка зарегистрированных пользователей")
     @GetMapping(
@@ -51,12 +58,15 @@ private final UsersService usersService;
             produces = {"application/json"},
             consumes = {"application/json"}
     )
-    public ResponseEntity<UserUpdateDTO> updateUser (
+    public ResponseEntity<UserDTO> updateUser (
             @Parameter(description = "Идентификатор пользователя", required = true)
             @PositiveOrZero @PathVariable("userId") int userId,
             @Parameter(description = "Запрос на обновление пользователя")
             @Valid @RequestBody(required = false) UserUpdateDTO request){
        return ResponseEntity.ok(usersService.userUpdate(userId,request ));
+    }
+    public UserDTO getById(Integer userId){
+       return userMapper.userToUserDTO(userRepository.getById(userId));
     }
 
 }
