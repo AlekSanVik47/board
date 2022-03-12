@@ -39,3 +39,4 @@ public class User {
 	private Status status;
 
 }
+
