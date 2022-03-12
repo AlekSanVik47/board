@@ -19,6 +19,7 @@ dependencies {
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '2.6.4'
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.6.4'
     implementation group: 'org.flywaydb', name: 'flyway-core', version: '8.5.1'
+    implementation 'org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.6.3'
 //    implementation group: 'org.flywaydb', name: 'flyway-mysql', version: '8.5.0'
 
     implementation 'org.projectlombok:lombok:1.18.22'

@@ -7,7 +7,10 @@ import bozhko_project.electronic_board.repository.UserRepository;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import bozhko_project.electronic_board.dto.UserDTO;
 
 import java.util.List;
 
@@ -31,11 +34,20 @@ public class UsersService {
 
 
       public UserUpdateDTO userUpdate(Integer userId, UserUpdateDTO request){
-            User user = userMapper.updateUser(request, userId);
+            User user = userMapper.updateUser(request, userId, getCurrentUser().getSurname());
             userRepository.save(user);
             return userMapper.userToUserDTO(user);
 
       }
+
+      private UserDTO getCurrentUser(){
+            SecurityContext securityContext = SecurityContextHolder.getContext();
+            String surname = securityContext.getAuthentication().getPrincipal().toString();
+            String name = securityContext.getAuthentication().getAuthorities().stream().findAny().get().getAuthority();
+            return new UserDTO(surname, name);
+      }
+
+
 }
 /*    public List<User> getRegUsers(String users){
         return  userRepository.findAll();

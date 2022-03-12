@@ -1,7 +1,7 @@
 package bozhko_project.electronic_board.mapper;
 
 import bozhko_project.electronic_board.dto.Status;
-import bozhko_project.electronic_board.dto.UserRegistrationDTO;
+import bozhko_project.electronic_board.dto.UserCreationDTO;
 import bozhko_project.electronic_board.dto.UserUpdateDTO;
 import bozhko_project.electronic_board.for_board.User;
 import org.mapstruct.AfterMapping;
@@ -17,12 +17,12 @@ public interface UserMapper {
 
     UserUpdateDTO userToUserDTO(User entity);
 
-    User userRegistrationRequestToUser(UserRegistrationDTO dto);
+    User userCreationRequestToUser(UserCreationDTO dto);
 
-    User updateUser(UserUpdateDTO dto, Integer id);
+    User updateUser(UserUpdateDTO dto, Integer id, String surname);
 
     @AfterMapping
-    default void afterMappingFromCreate(@MappingTarget User target, UserRegistrationDTO dto){
+    default void afterMappingFromCreate(@MappingTarget User target, UserCreationDTO dto){
         target.setStatus(Status.NEW);
     }
 
@@ -30,3 +30,4 @@ public interface UserMapper {
 
 
 }
+

@@ -1,6 +1,5 @@
 package bozhko_project.electronic_board.controller;
 
-import bozhko_project.electronic_board.dto.UserDTO;
 import bozhko_project.electronic_board.dto.UserUpdateDTO;
 import bozhko_project.electronic_board.for_board.User;
 import bozhko_project.electronic_board.service.UsersService;
@@ -27,7 +26,7 @@ public class UserController {
 @Autowired
 private final UsersService usersService;
 
-   @Operation(description = " Получение списка зарегестрированных пользователей")
+   @Operation(description = " Получение списка зарегистрированных пользователей")
     @GetMapping(
             value = "/user/all-users/{users}"
     )

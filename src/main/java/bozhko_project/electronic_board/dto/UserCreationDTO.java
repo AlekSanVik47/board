@@ -7,7 +7,7 @@ import lombok.*;
 @AllArgsConstructor
 @Data
 @Schema(description = "Регистрация пользователя")
-public class UserRegistrationDTO {
+public class UserCreationDTO {
     @Schema(description = "Идентификатор")
     private Long id;
 
