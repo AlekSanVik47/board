@@ -52,7 +52,7 @@ private final UsersService usersService;
             consumes = {"application/json"}
     )
     public ResponseEntity<UserUpdateDTO> updateUser (
-            @Parameter(description = "Идентификатор задачи", required = true)
+            @Parameter(description = "Идентификатор пользователя", required = true)
             @PositiveOrZero @PathVariable("userId") int userId,
             @Parameter(description = "Запрос на обновление пользователя")
             @Valid @RequestBody(required = false) UserUpdateDTO request){
