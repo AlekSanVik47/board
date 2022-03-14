@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 
 
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class, SecurityAutoConfiguration.class})
-
 public class ElectronicBoardApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ElectronicBoardApplication.class, args);

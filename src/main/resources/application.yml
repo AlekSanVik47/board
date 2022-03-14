@@ -24,11 +24,14 @@ spring:
     driver-class-name: org.postgresql.Driver
     #url: jdbc:postgresql://localhost:5432/test?currentSchema=public
     url: jdbc:postgresql://localhost/test
-
-
     username: user
     password: 12345
 
+secure:
+  oauth2:
+  client:
+  client-id: first-client
+  client-secret: noonewilleverguess
 
   #jpa.hibernate.ddl-auto: update
   jpa.database-platform: org.hibernate.dialect.PostgreSQLDialect
