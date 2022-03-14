@@ -9,6 +9,8 @@ logging:
 spring:
   flyway:
     enabled: true
+  main:
+    web-application-type: none
   application:
     name: bozhko_project
   mvc:

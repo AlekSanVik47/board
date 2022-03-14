@@ -1,6 +1,7 @@
 package configuration.test;
 
 
+import bozhko_project.electronic_board.configuration.BasicConfiguration;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -21,7 +22,7 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = RANDOM_PORT)
+@SpringBootTest(webEnvironment = RANDOM_PORT, classes={BasicConfiguration.class})
 public class BasicConfigurationIntegrationTest {
 	TestRestTemplate restTemplate;
 	URL base;

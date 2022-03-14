@@ -1,5 +1,6 @@
 package bozhko_project.electronic_board.configuration;
 
+
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
@@ -24,11 +25,10 @@ public class SwaggerConfig {
                                                 .password(new OAuthFlow()
                                                         .refreshUrl("/oauth/token")
                                                         .tokenUrl("/oauth/token")
-                                                        .scopes(new Scopes().addString("tasks", "scope задач"))
+                                                        .scopes(new Scopes().addString("users", "scope задач"))
                                                 ))))
                 .info(new Info().title("Board Service")
                         .description("Board Service")
                         .version("v0.0.1"));
     }
-
 }
