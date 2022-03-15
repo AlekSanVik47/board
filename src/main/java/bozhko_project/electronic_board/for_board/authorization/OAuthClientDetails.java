@@ -56,6 +56,7 @@ public class OAuthClientDetails {
     /** Полномочия */
     private String authorities;
 
+    @Column(name ="autoapprove")
     private boolean autoapprove;
 }
 

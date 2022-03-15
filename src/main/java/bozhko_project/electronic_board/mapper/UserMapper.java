@@ -2,7 +2,6 @@ package bozhko_project.electronic_board.mapper;
 
 import bozhko_project.electronic_board.dto.Status;
 import bozhko_project.electronic_board.dto.UserCreationDTO;
-import bozhko_project.electronic_board.dto.UserDTO;
 import bozhko_project.electronic_board.dto.UserUpdateDTO;
 import bozhko_project.electronic_board.for_board.User;
 import org.mapstruct.AfterMapping;
@@ -16,7 +15,7 @@ import static org.mapstruct.ReportingPolicy.IGNORE;
 public interface UserMapper {
     String userRegDTO(String entity);
 
-    UserDTO userToUserDTO(User entity);
+    UserUpdateDTO userToUserDTO(User entity);
 
     User userCreationRequestToUser(UserCreationDTO dto);
 

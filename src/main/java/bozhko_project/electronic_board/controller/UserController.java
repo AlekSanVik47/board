@@ -1,6 +1,5 @@
 package bozhko_project.electronic_board.controller;
 
-import bozhko_project.electronic_board.dto.UserDTO;
 import bozhko_project.electronic_board.dto.UserUpdateDTO;
 import bozhko_project.electronic_board.for_board.User;
 import bozhko_project.electronic_board.mapper.UserMapper;
@@ -58,14 +57,14 @@ private final UserRepository userRepository;
             produces = {"application/json"},
             consumes = {"application/json"}
     )
-    public ResponseEntity<UserDTO> updateUser (
+    public ResponseEntity<UserUpdateDTO> updateUser (
             @Parameter(description = "Идентификатор пользователя", required = true)
             @PositiveOrZero @PathVariable("userId") int userId,
             @Parameter(description = "Запрос на обновление пользователя")
             @Valid @RequestBody(required = false) UserUpdateDTO request){
        return ResponseEntity.ok(usersService.userUpdate(userId,request ));
     }
-    public UserDTO getById(Integer userId){
+    public UserUpdateDTO getById(Integer userId){
        return userMapper.userToUserDTO(userRepository.getById(userId));
     }
 
