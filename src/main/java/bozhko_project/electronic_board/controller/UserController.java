@@ -20,7 +20,7 @@ import javax.validation.constraints.PositiveOrZero;
 import java.util.List;
 
 @Controller
-@RequestMapping
+@RequestMapping 
 @RequiredArgsConstructor
 @Tag(name = "UserController", description = "API контролера по работе с пользователями")
 @Validated
@@ -68,4 +68,11 @@ private final UserRepository userRepository;
        return userMapper.userToUserDTO(userRepository.getById(userId));
     }
 
+ /*   @Operation(description = "Авторизация пользователя")
+    @GetMapping(value = "/user/authorization")
+    public ResponseEntity<User> getUserAuthorization(
+            @Parameter(description = "")
+    ){
+
+    }*/
 }

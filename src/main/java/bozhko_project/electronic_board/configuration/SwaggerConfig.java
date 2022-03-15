@@ -18,7 +18,7 @@ public class SwaggerConfig {
                 .components(new Components()
                         .addSecuritySchemes("bearer",
                                 new SecurityScheme()
-                                        .type(SecurityScheme.Type.OAUTH2)
+                                        .type(SecurityScheme.Type.HTTP)
                                         .scheme("bearer")
                                         .bearerFormat("JWT")
                                         .flows(new OAuthFlows()
