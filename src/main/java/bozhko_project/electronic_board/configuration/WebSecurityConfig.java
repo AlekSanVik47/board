@@ -12,8 +12,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 @Configuration
-//@EnableWebSecurity
-//@EnableGlobalMethodSecurity(securedEnabled = true)
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(securedEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
@@ -24,8 +24,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailsService);
 	}
-
-
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -42,8 +40,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.usernameParameter("nick")
 				.passwordParameter("password")
 				.permitAll();
-
-
 	}
 
 }

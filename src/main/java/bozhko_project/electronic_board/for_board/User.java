@@ -48,8 +48,8 @@ public class User {
 	@Column
 	private String phone;
 
-	/*@Column (name = "status", nullable = false)
-	private Status status;*/
+	@Column (name = "status", nullable = false)
+	private Status status;
 
 
 }
