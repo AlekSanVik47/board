@@ -1,5 +1,6 @@
 package bozhko_project.electronic_board.service;
 
+import bozhko_project.electronic_board.dto.UserAuthDTO;
 import bozhko_project.electronic_board.dto.UserDTO;
 import bozhko_project.electronic_board.dto.UserUpdateDTO;
 import bozhko_project.electronic_board.exception.CannotEditOtherUsersException;
@@ -11,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -52,6 +54,16 @@ public class UsersService {
 		String nick = securityContext.getAuthentication().getPrincipal().toString();
 		String role = securityContext.getAuthentication().getAuthorities().stream().findAny().get().getAuthority();
 		return new UserDTO(nick, role);
+	}
+
+	private User userAuth(UserAuthDTO request, String nick)throws UsernameNotFoundException {
+		User userAuthDTO = userMapper.userAuth(request, nick);
+		Optional<User> optional = Optional.ofNullable(userRepository.findUserByNick(nick));
+		if (!optional.get().getNick().equals(userAuthDTO.getNick())
+				&&!optional.get().getPassword().equals(userAuthDTO.getPassword())){
+			throw  new UsernameNotFoundException ("Логин или пароль введен не верно!");
+		}
+ 			return userAuthDTO;
 	}
 
 }

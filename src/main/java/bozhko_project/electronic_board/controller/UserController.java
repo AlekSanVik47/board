@@ -1,5 +1,6 @@
 package bozhko_project.electronic_board.controller;
 
+import bozhko_project.electronic_board.dto.UserAuthDTO;
 import bozhko_project.electronic_board.dto.UserUpdateDTO;
 import bozhko_project.electronic_board.for_board.User;
 import bozhko_project.electronic_board.mapper.UserMapper;
@@ -10,6 +11,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
@@ -68,11 +70,15 @@ private final UserRepository userRepository;
        return userMapper.userToUserDTO(userRepository.getById(userId));
     }
 
- /*   @Operation(description = "Авторизация пользователя")
-    @GetMapping(value = "/user/authorization")
-    public ResponseEntity<User> getUserAuthorization(
-            @Parameter(description = "")
-    ){
+    @Operation(description = "Авторизация пользователя")
+    @PostMapping(value = "/user/authorization",
+    produces = {"application/json"},
+    consumes = {"application/json"})
+    public ResponseEntity<User> userAuthorization(
+            @Parameter(description = "Запрос на авторизацию")
+            @Valid @RequestBody UserAuthDTO request) {
+return  ResponseEntity.ok(usersService.getUserMapper().userAuth(request));
+    }
 
-    }*/
+
 }

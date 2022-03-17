@@ -22,6 +22,5 @@ public class AccountUserDetailsService implements UserDetailsService {
 		Optional<User> userOptional = Optional.ofNullable(userRepository.findUserByNick(nick));
 		User user = userOptional.orElseThrow(()-> new UsernameNotFoundException("Пользователь не найден"));
 		return new UserDetailsImpl(user);
-		
 	}
 }

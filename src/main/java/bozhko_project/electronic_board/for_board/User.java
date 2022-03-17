@@ -13,9 +13,22 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Table (name="users")
 public class User {
+	public enum Role{
+		USER,ADMIN
+	};
+	public enum State{
+		NOT_CONFIRMED, CONFIRMED, DELETE, BANNED
+	};
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+
+	@Enumerated(value = EnumType.STRING)
+	private Role role;
+
+	@Enumerated(value = EnumType.STRING)
+	private State state;
 
 	@Column(name = "nick")
 	private String nick;
@@ -35,8 +48,8 @@ public class User {
 	@Column
 	private String phone;
 
-	@Column (name = "status", nullable = false)
-	private Status status;
+	/*@Column (name = "status", nullable = false)
+	private Status status;*/
 
 
 }

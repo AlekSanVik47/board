@@ -1,6 +1,7 @@
 package bozhko_project.electronic_board.mapper;
 
 import bozhko_project.electronic_board.dto.Status;
+import bozhko_project.electronic_board.dto.UserAuthDTO;
 import bozhko_project.electronic_board.dto.UserCreationDTO;
 import bozhko_project.electronic_board.dto.UserUpdateDTO;
 import bozhko_project.electronic_board.for_board.User;
@@ -21,10 +22,14 @@ public interface UserMapper {
 
     User updateUser(UserUpdateDTO dto, Integer id);
 
+    User userAuth(UserAuthDTO dto, String nick);
+
     @AfterMapping
     default void afterMappingFromCreate(@MappingTarget User target, UserCreationDTO dto){
-        target.setStatus(Status.NEW);
+        target.getState();
     }
+
+    User userAuth(UserAuthDTO dto);
 
     User updateUser(UserUpdateDTO dto, String surname);
 

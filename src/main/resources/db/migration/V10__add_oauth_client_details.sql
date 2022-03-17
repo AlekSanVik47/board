@@ -19,4 +19,4 @@ INSERT INTO oauth_client_details ( client_id,
   36000,
   null,
   'tasks',
-  null,) ;
+  null) ;
