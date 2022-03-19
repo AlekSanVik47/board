@@ -30,8 +30,8 @@ public class User {
 	@Enumerated(value = EnumType.STRING)
 	private State state;
 
-	@Column(name = "nick")
-	private String nick;
+	@Column(name = "login")
+	private String login;
 
 	@Column(name = "password")
 	private String password;

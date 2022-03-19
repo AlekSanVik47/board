@@ -56,15 +56,7 @@ public class UsersService {
 		return new UserDTO(nick, role);
 	}
 
-	private User userAuth(UserAuthDTO request, String nick)throws UsernameNotFoundException {
-		User userAuthDTO = userMapper.userAuth(request, nick);
-		Optional<User> optional = Optional.ofNullable(userRepository.findUserByNick(nick));
-		if (!optional.get().getNick().equals(userAuthDTO.getNick())
-				&&!optional.get().getPassword().equals(userAuthDTO.getPassword())){
-			throw  new UsernameNotFoundException ("Логин или пароль введен не верно!");
-		}
- 			return userAuthDTO;
-	}
+
 
 }
 

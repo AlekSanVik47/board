@@ -1,16 +1,11 @@
 server:
   port: ${PORT_TO_EXPOSE:8081}
 
-logging:
-  level:
-    ROOT: INFO
-    org.springframework: INFO
-
 spring:
   flyway:
     enabled: true
   main:
-    web-application-type: none
+    web-application-type:
   application:
     name: bozhko_project
   mvc:
