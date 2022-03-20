@@ -1,6 +1,5 @@
 package bozhko_project.electronic_board.service;
 
-import bozhko_project.electronic_board.dto.UserAuthDTO;
 import bozhko_project.electronic_board.dto.UserDTO;
 import bozhko_project.electronic_board.dto.UserUpdateDTO;
 import bozhko_project.electronic_board.exception.CannotEditOtherUsersException;
@@ -12,7 +11,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,7 +32,6 @@ public class UsersService {
 	public List<User> getRegisteredUsers() {
 		return userRepository.findAll();
 	}
-
 
 	public UserUpdateDTO userUpdate(Integer userId, UserUpdateDTO request) {
 		User user = userMapper.updateUser(request, userId);
