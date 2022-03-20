@@ -36,18 +36,15 @@ private final UserRepository userRepository;
 
    @Operation(description = " Получение списка зарегистрированных пользователей")
     @GetMapping(
-            value = "/user/all-users/{users}"
+            value = "/user/all-users/{users}",
+            produces = {"application/json"}
     )
-    public ResponseEntity<List<User>> getUsers (
-           @PathVariable(name = "users")  String users){
+    public ResponseEntity<List<User>> getUsers (@Parameter (description = "Список пользователей")@RequestParam String users){
+       users = "users";
        List<User> allUsers = usersService.getRegisteredUsers();
        return   ResponseEntity.ok(allUsers);
    }
-   /* public ResponseEntity<List<User>> getAllUsers(
-            @PathVariable(name = "all-users") String users) {
-        List<User> allUsers = usersService.getRegUsers("all-users");
-        return ResponseEntity.ok(allUsers);
-   }*/
+
    @Operation(description = " Получение пользователя по номеру телефона")
    @GetMapping(value = "/user/by-phone/{phone}")
     public ResponseEntity <User> getUserByPhone (@PathVariable (name = "phone") String phone){

@@ -12,7 +12,7 @@ public class UserCreationDTO {
     private Long id;
 
     @Schema(description = "Логин пользователя")
-    private String nick;
+    private String login;
 
     @Schema(description = "Имя")
     private String name;

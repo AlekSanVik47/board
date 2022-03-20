@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class UserAuthDTO {
 
 	@Schema(description = "Логин пользователя")
-	private String nick;
+	private String login;
 
 	@Schema(description = "пароль")
 	private String password;

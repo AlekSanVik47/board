@@ -21,12 +21,14 @@ spring:
     url: jdbc:postgresql://localhost/test
     username: user
     password: 12345
-
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
 secure:
-  oauth2:
-  client:
-  client-id: first-client
-  client-secret: noonewilleverguess
+  bearerAuth: []
 
   #jpa.hibernate.ddl-auto: update
   jpa.database-platform: org.hibernate.dialect.PostgreSQLDialect

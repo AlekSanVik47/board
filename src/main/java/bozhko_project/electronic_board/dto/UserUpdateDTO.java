@@ -9,7 +9,7 @@ import lombok.*;
 @Schema(description = "Запрос на обновления данных пользователя")
 public class UserUpdateDTO {
     @Schema(description = "Логин пользователя")
-    private String nick;
+    private String login;
 
     @Schema(description = "Электронная почта")
     private String email;

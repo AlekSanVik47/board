@@ -31,15 +31,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		http.authorizeRequests()
 				.antMatchers("/oauth/**", "/v3/api-docs.yaml", "/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**").permitAll()
+				.antMatchers("/registration").not().fullyAuthenticated()
+				.antMatchers("/admin/**").hasRole("ADMIN")
+				.antMatchers("/news").hasRole("USER")
+				.antMatchers("/", "/resources/**").permitAll()
 				.anyRequest().authenticated()
 				.and()
 				.formLogin()
-				.loginPage("/signIn")
-				.defaultSuccessUrl("/profile")
+				.loginPage("/")
+				.defaultSuccessUrl("/signIn")
 				.failureUrl("/signIn?error")
-				.usernameParameter("nick")
+				.usernameParameter("login")
 				.passwordParameter("password")
 				.permitAll();
 	}
 
 }
+
