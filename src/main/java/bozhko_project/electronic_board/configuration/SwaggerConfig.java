@@ -1,10 +1,7 @@
 package bozhko_project.electronic_board.configuration;
 
-
-import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
-import io.swagger.v3.oas.models.security.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -14,7 +11,7 @@ public class SwaggerConfig {
     @Bean
     public OpenAPI springShopOpenAPI() {
         return new OpenAPI()
-                .addSecurityItem(new SecurityRequirement().addList("bearer"))
+               /* .addSecurityItem(new SecurityRequirement().addList("bearer"))
                 .components(new Components()
                         .addSecuritySchemes("bearer",
                                 new SecurityScheme()
@@ -26,9 +23,14 @@ public class SwaggerConfig {
                                                         .refreshUrl("/oauth/token")
                                                         .tokenUrl("/oauth/token")
                                                         .scopes(new Scopes().addString("users", "scope задач"))
-                                                ))))
+                                                ))))*/
                 .info(new Info().title("Board Service")
                         .description("Board Service")
                         .version("v0.0.1"));
+             //   .servers(List.of(new Server().url("http://localhost:8081")));
+
+
     }
 }
+
+

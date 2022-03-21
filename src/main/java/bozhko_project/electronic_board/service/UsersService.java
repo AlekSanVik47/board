@@ -42,18 +42,16 @@ public class UsersService {
 	private void checkCurrentUserUpdatePermission(Integer userId) throws CannotEditOtherUsersException {
 		UserDTO currentUser =getCurrentUser();
 		Optional<User> optionalUser = userRepository.findById(userId);
-				if (optionalUser.isPresent()&&!optionalUser.get().getPhone().equals(currentUser.getNick())&&!currentUser.getRole().equals("ADMIN")){
+				if (optionalUser.isPresent()&&!optionalUser.get().getPhone().equals(currentUser.getLogin())&&!currentUser.getRole().equals("ADMIN")){
 					throw new CannotEditOtherUsersException();
 				}
 	}
 	private UserDTO getCurrentUser() {
 		SecurityContext securityContext = SecurityContextHolder.getContext();
-		String nick = securityContext.getAuthentication().getPrincipal().toString();
+		String login = securityContext.getAuthentication().getPrincipal().toString();
 		String role = securityContext.getAuthentication().getAuthorities().stream().findAny().get().getAuthority();
-		return new UserDTO(nick, role);
+		return new UserDTO(login, role);
 	}
-
-
 
 }
 

@@ -1,9 +1,7 @@
 package bozhko_project.electronic_board.configuration;
 
-import bozhko_project.electronic_board.for_board.authorization.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.ObjectPostProcessor;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -28,10 +26,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable();
-
-		http.authorizeRequests()
-				.antMatchers("/oauth/**", "/v3/api-docs.yaml", "/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**").permitAll()
-				.antMatchers("/registration").not().fullyAuthenticated()
+	}
+		/*http.authorizeRequests()
+				//.antMatchers("/oauth/**", "/v3/api-docs.yaml", "/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**").permitAll()
+				/*.antMatchers("/registration").not().fullyAuthenticated()
 				.antMatchers("/admin/**").hasRole("ADMIN")
 				.antMatchers("/news").hasRole("USER")
 				.antMatchers("/", "/resources/**").permitAll()
@@ -44,7 +42,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.usernameParameter("login")
 				.passwordParameter("password")
 				.permitAll();
-	}
+	}*/
 
 }
 

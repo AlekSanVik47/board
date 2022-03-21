@@ -11,7 +11,6 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
@@ -22,7 +21,7 @@ import javax.validation.constraints.PositiveOrZero;
 import java.util.List;
 
 @Controller
-@RequestMapping 
+@RequestMapping
 @RequiredArgsConstructor
 @Tag(name = "UserController", description = "API контролера по работе с пользователями")
 @Validated
@@ -37,17 +36,20 @@ private final UserRepository userRepository;
    @Operation(description = " Получение списка зарегистрированных пользователей")
     @GetMapping(
             value = "/user/all-users/{users}",
-            produces = {"application/json"}
+           produces = {"application/json"}
     )
     public ResponseEntity<List<User>> getUsers (@Parameter (description = "Список пользователей")@RequestParam String users){
-       users = "users";
+       //users = "users";
        List<User> allUsers = usersService.getRegisteredUsers();
        return   ResponseEntity.ok(allUsers);
    }
 
    @Operation(description = " Получение пользователя по номеру телефона")
-   @GetMapping(value = "/user/by-phone/{phone}")
+   @GetMapping(value = "/user/by-phone/{phone}",
+           produces = {"application/json"},
+           consumes = {"application/json"})
     public ResponseEntity <User> getUserByPhone (@PathVariable (name = "phone") String phone){
+       System.out.println(phone);
        return  ResponseEntity.ok(usersService.getUserByPhone(phone));
    }
     @Operation(description = "Обновление пользователя")

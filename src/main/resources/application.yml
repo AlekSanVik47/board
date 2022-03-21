@@ -4,8 +4,8 @@ server:
 spring:
   flyway:
     enabled: true
-  main:
-    web-application-type:
+ # main:
+ #   web-application-type:
   application:
     name: bozhko_project
   mvc:
@@ -21,14 +21,14 @@ spring:
     url: jdbc:postgresql://localhost/test
     username: user
     password: 12345
-components:
-  securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
-secure:
-  bearerAuth: []
+#components:
+ # securitySchemes:
+  #  bearerAuth:
+  #    type: http
+   #   scheme: bearer
+  #    bearerFormat: JWT
+#secure:
+ # bearerAuth: []
 
   #jpa.hibernate.ddl-auto: update
   jpa.database-platform: org.hibernate.dialect.PostgreSQLDialect

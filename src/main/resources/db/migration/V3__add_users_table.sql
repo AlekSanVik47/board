@@ -1,4 +1,4 @@
-INSERT INTO users (id, nick, name, surname, phone,email, password)
+INSERT INTO users (id, login, name, surname, phone,email, password)
 VALUES
   (3, 'Sam', 'Samson', 'Gallagher','8-922-836-5167','tempus@hotmail.com',  'pass3@'),
   (4, 'Yve', 'Yvette', 'Copeland','8-874-994-5748','phasellus.dapibus.quam@google.edu', 'pass4@'),

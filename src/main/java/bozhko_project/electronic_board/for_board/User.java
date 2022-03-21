@@ -1,9 +1,9 @@
 package bozhko_project.electronic_board.for_board;
 
+import bozhko_project.electronic_board.dto.Status;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import bozhko_project.electronic_board.dto.Status;
 
 import javax.persistence.*;
 
@@ -12,7 +12,8 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table (name="users")
-public class User {
+public class User  {
+
 	public enum Role{
 		USER,ADMIN
 	};

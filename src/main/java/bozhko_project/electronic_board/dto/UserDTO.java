@@ -10,9 +10,7 @@ import lombok.Setter;
 @Setter
 public class UserDTO {
 
-    private String nick;
-
+    private String login;
     private String role;
-
 
 }

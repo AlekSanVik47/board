@@ -21,8 +21,8 @@ public class Authority {
 
     /** Логин */
     @Id
-    @Column(name = "nick")
-    private String nick;
+    @Column(name = "login")
+    private String login;
 
     /** Роль */
     private String authority;

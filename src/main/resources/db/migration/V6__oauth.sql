@@ -1,9 +1,9 @@
 create table authorities (
-                             nick varchar(50) not null,
+                             login varchar(50) not null,
                              authority varchar(50) not null,
-                             constraint fk_authorities_users foreign key(nick) references users(nick)
+                             constraint fk_authorities_users foreign key(login) references users(login)
 );
-create unique index ix_auth_nick on authorities (nick,authority);
+create unique index ix_auth_nick on authorities (login,authority);
 
 create table oauth_client_details
 (

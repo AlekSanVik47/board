@@ -1,6 +1,6 @@
 create table users (
 	id bigint not null,
-	nick varchar(100) not null, unique(nick),
+	login varchar(100) not null, unique(login),
 	surname varchar(100) not null,
 	name varchar(100) not null,
 	phone varchar(100) not null, unique(phone),
