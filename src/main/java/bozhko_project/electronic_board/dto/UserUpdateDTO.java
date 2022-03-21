@@ -8,6 +8,12 @@ import lombok.*;
 @Data
 @Schema(description = "Запрос на обновления данных пользователя")
 public class UserUpdateDTO {
+    @Schema(description = "Имя пользователя")
+    private String name;
+
+    @Schema(description = "Фамилия пользователя")
+    String surname;
+
     @Schema(description = "Логин пользователя")
     private String login;
 

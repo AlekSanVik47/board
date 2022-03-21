@@ -31,6 +31,7 @@ public class User  {
 	@Enumerated(value = EnumType.STRING)
 	private State state;
 
+
 	@Column(name = "login")
 	private String login;
 

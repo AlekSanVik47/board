@@ -5,12 +5,11 @@ import bozhko_project.electronic_board.dto.UserAuthDTO;
 import bozhko_project.electronic_board.dto.UserCreationDTO;
 import bozhko_project.electronic_board.dto.UserUpdateDTO;
 import bozhko_project.electronic_board.for_board.User;
-import org.mapstruct.AfterMapping;
-import org.mapstruct.Mapper;
-import org.mapstruct.MappingTarget;
+import org.mapstruct.*;
 
 
 import static org.mapstruct.ReportingPolicy.IGNORE;
+
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = IGNORE)
 public interface UserMapper {
@@ -19,6 +18,9 @@ public interface UserMapper {
     UserUpdateDTO userToUserDTO(User entity);
 
     User userCreationRequestToUser(UserCreationDTO dto);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    User updateUser(UserUpdateDTO dto, @MappingTarget User entity);
 
     User updateUser(UserUpdateDTO dto, Integer id);
 

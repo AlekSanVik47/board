@@ -38,8 +38,8 @@ private final UserRepository userRepository;
             value = "/user/all-users/{users}",
            produces = {"application/json"}
     )
-    public ResponseEntity<List<User>> getUsers (@Parameter (description = "Список пользователей")@RequestParam String users){
-       //users = "users";
+    public ResponseEntity<List<User>> getUsers (@Parameter (description = "Список пользователей")
+                                                   @RequestParam String users){
        List<User> allUsers = usersService.getRegisteredUsers();
        return   ResponseEntity.ok(allUsers);
    }
@@ -48,7 +48,8 @@ private final UserRepository userRepository;
    @GetMapping(value = "/user/by-phone/{phone}",
            produces = {"application/json"},
            consumes = {"application/json"})
-    public ResponseEntity <User> getUserByPhone (@PathVariable (name = "phone") String phone){
+    public ResponseEntity <User> getUserByPhone (@Parameter (description = "Поиск пользователя по номеру телефона")
+                                                    @RequestParam String phone){
        System.out.println(phone);
        return  ResponseEntity.ok(usersService.getUserByPhone(phone));
    }
@@ -58,13 +59,13 @@ private final UserRepository userRepository;
             produces = {"application/json"},
             consumes = {"application/json"}
     )
-    public ResponseEntity<UserUpdateDTO> updateUser (
+   /* public ResponseEntity<UserUpdateDTO> updateUser (
             @Parameter(description = "Идентификатор пользователя", required = true)
             @PositiveOrZero @PathVariable("userId") int userId,
             @Parameter(description = "Запрос на обновление пользователя")
             @Valid @RequestBody(required = false) UserUpdateDTO request){
        return ResponseEntity.ok(usersService.userUpdate(userId,request ));
-    }
+    }*/
     public UserUpdateDTO getById(Integer userId){
        return userMapper.userToUserDTO(userRepository.getById(userId));
     }
