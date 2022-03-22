@@ -1,8 +1,6 @@
 package bozhko_project.electronic_board.service;
 
 import bozhko_project.electronic_board.dto.UserDTO;
-import bozhko_project.electronic_board.dto.UserUpdateDTO;
-import bozhko_project.electronic_board.exception.CannotEditOtherUsersException;
 import bozhko_project.electronic_board.for_board.User;
 import bozhko_project.electronic_board.mapper.UserMapper;
 import bozhko_project.electronic_board.repository.UserRepository;
@@ -14,7 +12,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -39,13 +36,13 @@ public class UsersService {
 		return userMapper.userToUserDTO(user);
 	}*/
 
-	private void checkCurrentUserUpdatePermission(Integer userId) throws CannotEditOtherUsersException {
+	/*private void checkCurrentUserUpdatePermission(Integer userId) throws CannotEditOtherUsersException {
 		UserDTO currentUser =getCurrentUser();
 		Optional<User> optionalUser = userRepository.findById(userId);
 				if (optionalUser.isPresent()&&!optionalUser.get().getPhone().equals(currentUser.getLogin())&&!currentUser.getRole().equals("ADMIN")){
 					throw new CannotEditOtherUsersException();
 				}
-	}
+	}*/
 	private UserDTO getCurrentUser() {
 		SecurityContext securityContext = SecurityContextHolder.getContext();
 		String login = securityContext.getAuthentication().getPrincipal().toString();

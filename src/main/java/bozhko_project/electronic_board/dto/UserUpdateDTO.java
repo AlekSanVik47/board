@@ -5,9 +5,15 @@ import lombok.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 @Data
 @Schema(description = "Запрос на обновления данных пользователя")
 public class UserUpdateDTO {
+
+   @Schema(description = "Id пользователя")
+   private Integer id;
+
     @Schema(description = "Имя пользователя")
     private String name;
 
@@ -28,4 +34,6 @@ public class UserUpdateDTO {
 
     @Schema (description = "статус")
     private Status status;
+
+
 }

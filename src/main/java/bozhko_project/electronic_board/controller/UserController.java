@@ -17,7 +17,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import javax.validation.constraints.PositiveOrZero;
 import java.util.List;
 
 @Controller
@@ -53,20 +52,24 @@ private final UserRepository userRepository;
        System.out.println(phone);
        return  ResponseEntity.ok(usersService.getUserByPhone(phone));
    }
-    @Operation(description = "Обновление пользователя")
+
+  @Operation(description = "Получение id пользователя")
+  @GetMapping(value = "/user/by-id/{id}")
+
+   /* @Operation(description = "Обновление пользователя")
     @PutMapping(
             value = "/v1/users/{userId}",
             produces = {"application/json"},
             consumes = {"application/json"}
     )
-   /* public ResponseEntity<UserUpdateDTO> updateUser (
+    public ResponseEntity<UserUpdateDTO> updateUser (
             @Parameter(description = "Идентификатор пользователя", required = true)
             @PositiveOrZero @PathVariable("userId") int userId,
             @Parameter(description = "Запрос на обновление пользователя")
             @Valid @RequestBody(required = false) UserUpdateDTO request){
-       return ResponseEntity.ok(usersService.userUpdate(userId,request ));
+       return ResponseEntity.ok(updateUser(userId,request ));
     }*/
-    public UserUpdateDTO getById(Integer userId){
+    public UserUpdateDTO getById(Long userId){
        return userMapper.userToUserDTO(userRepository.getById(userId));
     }
 

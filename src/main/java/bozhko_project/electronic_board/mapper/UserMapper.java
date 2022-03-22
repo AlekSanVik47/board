@@ -1,12 +1,10 @@
 package bozhko_project.electronic_board.mapper;
 
-import bozhko_project.electronic_board.dto.Status;
 import bozhko_project.electronic_board.dto.UserAuthDTO;
 import bozhko_project.electronic_board.dto.UserCreationDTO;
 import bozhko_project.electronic_board.dto.UserUpdateDTO;
 import bozhko_project.electronic_board.for_board.User;
 import org.mapstruct.*;
-
 
 import static org.mapstruct.ReportingPolicy.IGNORE;
 

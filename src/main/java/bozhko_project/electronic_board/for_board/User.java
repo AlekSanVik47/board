@@ -23,7 +23,7 @@ public class User  {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 
 	@Enumerated(value = EnumType.STRING)
 	private Role role;
@@ -50,8 +50,10 @@ public class User  {
 	@Column
 	private String phone;
 
+	@Enumerated(value = EnumType.STRING)
 	@Column (name = "status", nullable = false)
 	private Status status;
+
 
 
 }
