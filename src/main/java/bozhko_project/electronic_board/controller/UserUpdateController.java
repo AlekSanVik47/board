@@ -11,10 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping
@@ -28,10 +25,10 @@ public class UserUpdateController {
     private final UserMapper userMapper;
 
     @Operation(description = "Обновление логина пользователя")
-    @PutMapping(value = "/v1/user/{userId}")
+    @PutMapping(value = "/v1/user/{userId}/{login}")
     public ResponseEntity<String> updateUserLoginDBController(
             @Parameter(description = "Идентификатор пользователя", required = true)
-            @PathVariable("userId") Long userId,
+            @PathVariable(value = "userId") Long userId,
             @RequestBody(required = false) UserUpdateDTO request) {
         updateService.userUpdateLoginDB(userId, request);
         return ResponseEntity.ok("Логин успешно обновлен");
