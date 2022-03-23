@@ -1,7 +1,7 @@
 package bozhko_project.electronic_board.controller;
 
 import bozhko_project.electronic_board.dto.UserUpdateDTO;
-import bozhko_project.electronic_board.for_board.User;
+import bozhko_project.electronic_board.entities.User;
 import bozhko_project.electronic_board.mapper.UserMapper;
 import bozhko_project.electronic_board.repository.UserRepository;
 import bozhko_project.electronic_board.service.UsersService;

@@ -1,6 +1,6 @@
-package bozhko_project.electronic_board.for_board.authorization;
+package bozhko_project.electronic_board.entities.authorization;
 
-import bozhko_project.electronic_board.for_board.User;
+import bozhko_project.electronic_board.entities.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

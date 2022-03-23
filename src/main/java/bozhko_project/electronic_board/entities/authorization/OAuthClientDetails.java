@@ -1,4 +1,4 @@
-package bozhko_project.electronic_board.for_board.authorization;
+package bozhko_project.electronic_board.entities.authorization;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

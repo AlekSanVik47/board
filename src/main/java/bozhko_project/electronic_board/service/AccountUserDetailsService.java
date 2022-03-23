@@ -1,7 +1,7 @@
 package bozhko_project.electronic_board.service;
 
-import bozhko_project.electronic_board.for_board.User;
-import bozhko_project.electronic_board.for_board.authorization.UserDetailsImpl;
+import bozhko_project.electronic_board.entities.User;
+import bozhko_project.electronic_board.entities.authorization.UserDetailsImpl;
 import bozhko_project.electronic_board.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;

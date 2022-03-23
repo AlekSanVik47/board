@@ -1,4 +1,4 @@
-package bozhko_project.electronic_board.for_board;
+package bozhko_project.electronic_board.entities;
 
 import lombok.Data;
 import lombok.ToString;

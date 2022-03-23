@@ -1,6 +1,6 @@
 package bozhko_project.electronic_board.repository;
 
-import bozhko_project.electronic_board.for_board.User;
+import bozhko_project.electronic_board.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

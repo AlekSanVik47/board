@@ -1,4 +1,4 @@
-package bozhko_project.electronic_board.for_board;
+package bozhko_project.electronic_board.entities;
 
 import bozhko_project.electronic_board.dto.Status;
 import lombok.AllArgsConstructor;
