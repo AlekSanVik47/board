@@ -11,7 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping
@@ -19,26 +22,29 @@ import org.springframework.web.bind.annotation.*;
 @Tag(name = "UserUpdateController", description = "API контролера обновления данных пользователя")
 @Validated
 public class UserUpdateController {
-	@Autowired
-	private final UserUpdateService updateService;
-	@Autowired
-	private final UserMapper userMapper;
+    @Autowired
+    private final UserUpdateService updateService;
+    @Autowired
+    private final UserMapper userMapper;
 
-	//@Autowired
-	//private final UserUpdateDTO dto;
-	
+    @Operation(description = "Обновление логина пользователя")
+    @PutMapping(value = "/v1/user/{userId}")
+    public ResponseEntity<String> updateUserLoginDBController(
+            @Parameter(description = "Идентификатор пользователя", required = true)
+            @PathVariable("userId") Long userId,
+            @RequestBody(required = false) UserUpdateDTO request) {
+        updateService.userUpdateLoginDB(userId, request);
+        return ResponseEntity.ok("Логин успешно обновлен");
+    }
 
-	@Operation(description = "Обновление пользователя")
-	@PutMapping(value = "/v1/users/{userId}")
-	public ResponseEntity<UserUpdateDTO> updateUser (
+	@Operation(description = "Обновление данных пользователя")
+	@PutMapping(value = "/v1/users/full/{userId}")
+	public ResponseEntity<String> userUpdateDBController(
 			@Parameter(description = "Идентификатор пользователя", required = true)
-			@PathVariable("userId")  Long userId,
-			@RequestParam("login") String login,
-		//	@Parameter
-		//	@Validated
-			@RequestBody(required = false) UserUpdateDTO request){
-		System.out.println(1);
-		return ResponseEntity.ok(updateService.userUpdateD(userId, request));
+			@PathVariable("userId") Long userId,
+			@RequestBody(required = false) UserUpdateDTO request) {
+		updateService.userAccountUpdate(userId, request);
+		return ResponseEntity.ok("Данные успешно обновлены");
 	}
 
 }

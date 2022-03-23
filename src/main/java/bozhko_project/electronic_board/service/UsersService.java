@@ -30,11 +30,6 @@ public class UsersService {
 		return userRepository.findAll();
 	}
 
-/*	public UserUpdateDTO userUpdate(Integer userId, UserUpdateDTO request) {
-		User user = userMapper.updateUser(request, userId);
-		userRepository.save(user);
-		return userMapper.userToUserDTO(user);
-	}*/
 
 	/*private void checkCurrentUserUpdatePermission(Integer userId) throws CannotEditOtherUsersException {
 		UserDTO currentUser =getCurrentUser();

@@ -1,25 +1,24 @@
 create table users (
-	id bigint not null constraint users_pk
-	primary key,
+	id bigint not null constraint users_pk primary key,
 	login varchar(100) not null, unique(login),
 	surname varchar(100) not null,
 	name varchar(100) not null,
 	phone varchar(100) not null, unique(phone),
 	email varchar(100) not null, unique(email),
 	password varchar(100) not null, unique (password),
-	status varchar(50)not null DEFAULT 'NEW'FOREIGN KEY(status_id) REFERENCES user_status(role),
-	role_id VARCHAR(50)not null DEFAULT 'USER' FOREIGN KEY(role_id) REFERENCES user_role(role),
-	state_id VARCHAR(50)not null DEFAULT 'CONFIRMED' FOREIGN KEY(state_id) REFERENCES user_state(role)
+	status varchar(50)not null DEFAULT 'NEW', FOREIGN KEY(status) REFERENCES user_status(status),
+	role VARCHAR(50)not null DEFAULT 'USER', FOREIGN KEY(role) REFERENCES user_role(role),
+	state VARCHAR(50)not null DEFAULT 'CONFIRMED', FOREIGN KEY(state) REFERENCES user_state(state)
 );
 
-create sequence hibernate_sequence
-    start with 1
-    increment by 1
-    no minvalue
-    no maxvalue
-    cache 1;
-
-alter sequence hibernate_sequence owned by users.id;
+--create sequence hibernate_sequence
+--    start with 1
+--    increment by 1
+--    no minvalue
+--    no maxvalue
+--    cache 1;
+--
+--alter sequence hibernate_sequence owned by users.id;
 
 insert into users (id, login, surname, name, phone, email, password, role) VALUES
 (1, 'Alex', 'Ivanov', 'Alexey', '+79053451338', 'test@mail.ru', 'pass1@', 'ADMIN'),

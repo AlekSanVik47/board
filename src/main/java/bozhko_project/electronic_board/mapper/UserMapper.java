@@ -19,9 +19,6 @@ public interface UserMapper {
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     User updateUser(UserUpdateDTO dto, @MappingTarget User entity);
-
-    User updateUser(UserUpdateDTO dto, Integer id);
-
     User userAuth(UserAuthDTO dto, String nick);
 
     @AfterMapping
@@ -30,8 +27,6 @@ public interface UserMapper {
     }
 
     User userAuth(UserAuthDTO dto);
-
-    User updateUser(UserUpdateDTO dto, String surname);
 
 }
 

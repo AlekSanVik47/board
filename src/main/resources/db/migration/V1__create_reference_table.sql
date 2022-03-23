@@ -10,9 +10,9 @@ create table user_status (id bigint not null constraint user_status_pk primary k
                          status varchar(50) not null, unique (status)
                           );
 
-insert into user_role (role) values ('USER'), ('ADMIN');
-insert into user_state (state) values ('NOT_CONFIRMED'), ('CONFIRMED'), ('DELETE'), ('BANNED');
-insert into user_status (status) values ('NEW'), ('IN_PROGRESS'), ('DELETE'), ('COMPLETED');
+insert into user_role (id, role) values (1,'USER'), (2, 'ADMIN');
+insert into user_state (id, state) values (1,'NOT_CONFIRMED'), (2, 'CONFIRMED'), (3,'DELETE'), (4,'BANNED');
+insert into user_status (id, status) values (1, 'NEW'), (2, 'IN_PROGRESS'), (3, 'DELETE'), (4, 'COMPLETED');
 
 
 
