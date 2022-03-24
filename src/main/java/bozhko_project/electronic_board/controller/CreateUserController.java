@@ -2,6 +2,7 @@ package bozhko_project.electronic_board.controller;
 
 import bozhko_project.electronic_board.dto.UserCreationDTO;
 import bozhko_project.electronic_board.service.UserCreateService;
+import bozhko_project.electronic_board.service.UserServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -24,26 +25,19 @@ public class CreateUserController {
 
     @Autowired
     private final UserCreateService userCreateService;
+    @Autowired
+    private final UserServiceImpl service;
 
     @Operation(description = "Создание пользователя")
     @PostMapping(
-            value = "/v1/create-user/{newId}",
+            value = "/v1/create-user",
             produces = {"application/json"},
             consumes = {"application/json"}
     )
     public ResponseEntity<String> createUser(@Parameter(description = "Запрос на создание пользователя", required = true)
-                                             @RequestBody(required = false) UserCreationDTO request,
-                                             @PathVariable(value = "newId") Long newUserId) {
-        userCreateService.createUser(request, newUserId);
+                                             @RequestBody(required = false) UserCreationDTO request) {
+        service.save(request);
         return ResponseEntity.ok("Пользователь успешно сохранен");
     }
-   /* @Operation(description = "Обновление данных пользователя")
-    @PutMapping(value = "/v1/users/full/{userId}")
-    public ResponseEntity<String> userUpdateDBController(
-            @Parameter(description = "Идентификатор пользователя", required = true)
-            @PathVariable("userId") Long userId,
-            @RequestBody(required = false) UserUpdateDTO request) {
-        updateService.userAccountUpdate(userId, request);
-        return ResponseEntity.ok("Данные успешно обновлены");*/
 }
 

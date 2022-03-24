@@ -4,6 +4,7 @@ import bozhko_project.electronic_board.entities.User;
 import bozhko_project.electronic_board.entities.authorization.UserDetailsImpl;
 import bozhko_project.electronic_board.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -11,6 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+/*
 
 @Service
 @RequiredArgsConstructor
@@ -23,6 +25,7 @@ public class AccountUserDetailsService implements UserDetailsService {
         return userRepository.findUserByLogin(login);
     }
 
+    @Qualifier
     @Override
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
         Optional<User> userOptional = Optional.ofNullable(userRepository.findUserByLogin(login));
@@ -46,3 +49,4 @@ public class AccountUserDetailsService implements UserDetailsService {
         return true;
     }
 }
+*/

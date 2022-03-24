@@ -4,7 +4,7 @@ import bozhko_project.electronic_board.dto.UserUpdateDTO;
 import bozhko_project.electronic_board.entities.User;
 import bozhko_project.electronic_board.mapper.UserMapper;
 import bozhko_project.electronic_board.repository.UserRepository;
-import bozhko_project.electronic_board.service.UsersService;
+import bozhko_project.electronic_board.service.UsersSearchService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -25,7 +25,7 @@ import java.util.List;
 public class UserSearchController {
 
     @Autowired
-    private final UsersService usersService;
+    private final UsersSearchService usersService;
 
     @Autowired
     private final UserMapper userMapper;

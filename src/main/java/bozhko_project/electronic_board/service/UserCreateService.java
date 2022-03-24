@@ -19,14 +19,12 @@ public class UserCreateService {
 	@Autowired
 	private final UserMapper userMapper;
 
-	 User.Role role = User.Role.valueOf("USER");
 
 
-	public void createUser(UserCreationDTO request, Long id){
+	public void createUser(UserCreationDTO request){
 		User user = userMapper.userCreationRequestToUser(request);
 		User.Role role = User.Role.valueOf("USER");
 		User.State state = User.State.valueOf("CONFIRMED");
-		id = 100l;
 		user.setLogin(request.getLogin());
 		user.setPassword(request.getPassword());
 		user.setName(request.getName());

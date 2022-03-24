@@ -25,7 +25,7 @@ public class UserUpdateController {
     private final UserMapper userMapper;
 
     @Operation(description = "Обновление логина пользователя")
-    @PutMapping(value = "/v1/user/{userId}/{login}")
+    @PutMapping(value = "/v1/user/{userId}")
     public ResponseEntity<String> updateUserLoginDBController(
             @Parameter(description = "Идентификатор пользователя", required = true)
             @PathVariable(value = "userId") Long userId,
