@@ -1,6 +1,5 @@
 package bozhko_project.electronic_board.mapper;
 
-import bozhko_project.electronic_board.dto.UserAuthDTO;
 import bozhko_project.electronic_board.dto.UserCreationDTO;
 import bozhko_project.electronic_board.dto.UserDTO;
 import bozhko_project.electronic_board.dto.UserUpdateDTO;
@@ -17,6 +16,8 @@ public interface UserMapper {
     UserDTO toUserDTO(User entity);
 
     UserUpdateDTO userToUserDTO(User entity);
+
+    UserCreationDTO createNewUser(User entity);
 
     User userCreationRequestToUser(UserCreationDTO dto);
 

@@ -1,7 +1,6 @@
 package bozhko_project.electronic_board.service;
 
 import bozhko_project.electronic_board.dto.UserCreationDTO;
-import bozhko_project.electronic_board.dto.UserDTO;
 import bozhko_project.electronic_board.entities.User;
 import bozhko_project.electronic_board.mapper.UserMapper;
 import bozhko_project.electronic_board.repository.UserRepository;
@@ -20,9 +19,23 @@ public class UserCreateService {
 	@Autowired
 	private final UserMapper userMapper;
 
-	public UserDTO createUser(UserCreationDTO request){
+	 User.Role role = User.Role.valueOf("USER");
+
+
+	public void createUser(UserCreationDTO request, Long id){
 		User user = userMapper.userCreationRequestToUser(request);
-		userRepository.save(user);
-		return userMapper.toUserDTO(user);
+		User.Role role = User.Role.valueOf("USER");
+		User.State state = User.State.valueOf("CONFIRMED");
+		id = 100l;
+		user.setLogin(request.getLogin());
+		user.setPassword(request.getPassword());
+		user.setName(request.getName());
+		user.setSurname(request.getSurname());
+		user.setEmail(request.getEmail());
+		user.setPhone(request.getPhone());
+		user.setRole(role);
+		user.setState(state);
+		userRepository.saveAndFlush(user);
 	}
+
 }

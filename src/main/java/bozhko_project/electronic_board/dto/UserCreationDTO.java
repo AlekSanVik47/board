@@ -18,24 +18,31 @@ public class UserCreationDTO {
     @Schema(description = "Идентификатор")
     private Long id;
 
+    @NotBlank
     @Schema(description = "Логин пользователя")
     private String login;
 
+    @NotBlank
     @Schema(description = "Имя")
     private String name;
 
+    @NotBlank
     @Schema(description = "Фамилия")
     private String surname;
 
+    @NotBlank
     @Schema(description = "Электронная почта")
     private String email;
 
+    @NotBlank
     @Schema(description = "Номер телефона")
     private String phone;
 
+    @NotBlank
     @Schema(description = "пароль")
     private String password;
 
+    @NotBlank
     @Schema (description = "статус")
     private Status status;
 }

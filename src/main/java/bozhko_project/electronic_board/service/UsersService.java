@@ -22,6 +22,7 @@ public class UsersService {
 	@Autowired
 	private final UserMapper userMapper;
 
+
 	public User getUserByPhone(String phone) {
 		return getUserRepository().findUserByPhone(phone);
 	}
@@ -44,7 +45,6 @@ public class UsersService {
 		String role = securityContext.getAuthentication().getAuthorities().stream().findAny().get().getAuthority();
 		return new UserDTO(login, role);
 	}
-
 }
 
 
