@@ -1,6 +1,7 @@
 package bozhko_project.electronic_board.controller;
 
 import bozhko_project.electronic_board.dto.UserCreationDTO;
+import bozhko_project.electronic_board.entities.User;
 import bozhko_project.electronic_board.service.UserServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -13,6 +14,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping
@@ -30,10 +32,11 @@ public class CreateUserController {
             produces = {"application/json"},
             consumes = {"application/json"}
     )
-    public ResponseEntity<String> createUser(@Parameter(description = "Запрос на создание пользователя", required = true)
-                                             @RequestBody(required = false) UserCreationDTO request) {
+    public ResponseEntity<User> createUser(@Parameter(description = "Запрос на создание пользователя", required = true)
+                                             @RequestBody(required = false) UserCreationDTO request,
+    @RequestParam(required = false) String login) {
         service.save(request);
-        return ResponseEntity.ok("Пользователь успешно сохранен");
+        return ResponseEntity.ok(service.findByUserLogin(login));
     }
 }
 
