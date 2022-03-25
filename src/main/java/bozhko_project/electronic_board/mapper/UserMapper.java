@@ -12,13 +12,13 @@ import static org.mapstruct.ReportingPolicy.IGNORE;
 @Mapper(componentModel = "spring", unmappedTargetPolicy = IGNORE)
 public interface UserMapper {
 
-    UserDTO toUserDTO(User entity);
+    UserDTO userToUserDTO(User entity);
 
-    UserUpdateDTO userToUserDTO(User entity);
+    UserUpdateDTO userToUpdateDTO(User entity);
 
     UserCreationDTO createNewUser(User entity);
 
-    User userCreationRequestToUser(UserCreationDTO dto);
+    User userCreationToUser(UserCreationDTO dto);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     User updateUser(UserUpdateDTO dto, @MappingTarget User entity);
@@ -33,5 +33,8 @@ public interface UserMapper {
     User updateUser(UserUpdateDTO dto, Integer id);
 
     User updateUser(UserUpdateDTO dto, String surname);
+
+    User getUserById(Long id);
 }
+
 

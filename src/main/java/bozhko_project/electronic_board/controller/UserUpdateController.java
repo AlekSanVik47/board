@@ -38,9 +38,9 @@ public class UserUpdateController {
 	@PutMapping(value = "/v1/users/full/{userId}")
 	public ResponseEntity<String> userUpdateDBController(
 			@Parameter(description = "Идентификатор пользователя", required = true)
-			@PathVariable("userId") Long userId,
+			@PathVariable("userId") Integer userId,
 			@RequestBody(required = false) UserUpdateDTO request) {
-		updateService.userAccountUpdate(userId, request);
+		updateService.userAccountUpdate(request, userId);
 		return ResponseEntity.ok("Данные успешно обновлены");
 	}
 

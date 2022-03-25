@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService{
 	@Transactional
 	@Override
 	public boolean save(UserCreationDTO creationDTO) {
-		User user = userMapper.userCreationRequestToUser(creationDTO);
+		User user = userMapper.userCreationToUser(creationDTO);
 		if (findByUserLogin(creationDTO.getLogin())!=null) {
 			return false;
 		}

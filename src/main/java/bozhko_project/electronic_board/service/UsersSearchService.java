@@ -31,6 +31,10 @@ public class UsersSearchService {
 		return userRepository.findAll();
 	}
 
+	public UserDTO getUserById(Long id) {
+		return userMapper.userToUserDTO(userRepository.getById(id));
+	}
+
 
 	/*private void checkCurrentUserUpdatePermission(Integer userId) throws CannotEditOtherUsersException {
 		UserDTO currentUser =getCurrentUser();
