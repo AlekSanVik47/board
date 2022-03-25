@@ -1,12 +1,11 @@
 package bozhko_project.electronic_board.service;
 
+import bozhko_project.electronic_board.dto.Status;
 import bozhko_project.electronic_board.dto.UserCreationDTO;
 import bozhko_project.electronic_board.entities.User;
 import bozhko_project.electronic_board.entities.authorization.UserDetailsImpl;
 import bozhko_project.electronic_board.repository.UserRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -37,9 +36,10 @@ public class UserServiceImpl implements UserService{
 		if (findByUserLogin(creationDTO.getLogin())!=null) {
 			return false;
 		}
+		user.setStatus(Status.valueOf("NEW"));
 		User.Role role = User.Role.valueOf("USER");
 		User.State state = User.State.valueOf("CONFIRMED");
-		user.setId(creationDTO.getId());
+//		user.setId(creationDTO.getId());
 		user.setLogin(creationDTO.getLogin());
 		user.setPassword(creationDTO.getPassword());
 		user.setName(creationDTO.getName());

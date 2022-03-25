@@ -3,6 +3,9 @@ package bozhko_project.electronic_board.dto;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 
 
@@ -16,6 +19,8 @@ import javax.validation.constraints.NotBlank;
 public class UserCreationDTO {
     @NotBlank
     @Schema(description = "Идентификатор")
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @NotBlank
