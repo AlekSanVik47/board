@@ -11,7 +11,7 @@
          margin: 10px ;
          text-align: right;
          margin: 15px 10px auto -1000px;
-         padding: 0 500px 0 150px;
+         padding: 0 500px 0 10px;
         }
         input{
         display: inline;
@@ -28,7 +28,10 @@
 <body>
 <form method="POST" action="/regForm">
     <ul>
-        <li>
+
+        <div>
+            <li><h2>Регистрация</h2></li>
+            <li>
             <label>Имя:
                 <input name="name" placeholder="Введите имя...">
             </label>
@@ -61,7 +64,9 @@
         <li>
             <input type="submit" value="Регистрация">
         </li>
+        </div>
     </ul>
+
 </form>
 
 </body>
