@@ -18,7 +18,7 @@ create table users (
 --    no maxvalue
 --    cache 1;
 --
-alter sequence hibernate_sequence owned by users.id;
+
 
 insert into users (login, surname, name, phone, email, password, role) VALUES
 ('Alex', 'Ivanov', 'Alexey', '+79053451338', 'test@mail.ru', 'pass1@', 'ADMIN'),
@@ -32,6 +32,8 @@ insert into users (login, surname, name, phone, email, password, role) VALUES
    ('Miranda', 'Myra', 'Miranda','(833) 396-6711','porta.elit.a@yahoo.com', 'pass6@'),
    ('Ima', 'Ima', 'Keith','(112) 544-1433','curabitur.sed@protonmail.com', 'pass7@');
 
+
+alter sequence hibernate_sequence owned by users.id;
 
 --create unique index ix_auth_nick on authorities (login,authority);
 --

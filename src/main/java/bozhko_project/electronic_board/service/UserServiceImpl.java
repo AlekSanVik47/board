@@ -53,4 +53,6 @@ public class UserServiceImpl implements UserService{
 		User user = userOptional.orElseThrow(() -> new UsernameNotFoundException("Пользователь не найден"));
 		return new UserDetailsImpl(user);
 	}
+
+
 }

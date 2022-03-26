@@ -3,6 +3,10 @@ package bozhko_project.electronic_board.dto;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -12,6 +16,8 @@ import lombok.*;
 public class UserUpdateDTO {
 
    @Schema(description = "Id пользователя")
+   @Id
+   @GeneratedValue(strategy = GenerationType.SEQUENCE)
    private Integer id;
 
     @Schema(description = "Имя пользователя")
@@ -33,7 +39,7 @@ public class UserUpdateDTO {
     private String password;
 
     @Schema (description = "статус")
-    private Status status;
+    private Status status = Status.NEW;
 
 
 }

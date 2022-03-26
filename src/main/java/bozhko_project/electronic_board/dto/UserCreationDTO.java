@@ -50,4 +50,7 @@ public class UserCreationDTO {
     @NotBlank
     @Schema (description = "статус")
     private Status status;
+
+
+
 }
