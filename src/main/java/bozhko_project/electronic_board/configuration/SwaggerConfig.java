@@ -1,29 +1,47 @@
 package bozhko_project.electronic_board.configuration;
 
+
+
+import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.security.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
 
+import javax.sql.DataSource;
 @Configuration
 public class SwaggerConfig {
-
+   /* private ApiKey apiKey() {
+        return new ApiKey("JWT", "Authorization", "header");
+    }
+*/
     @Bean
     public OpenAPI springShopOpenAPI() {
+
         return new OpenAPI()
-               /* .addSecurityItem(new SecurityRequirement().addList("bearer"))
+                .addSecurityItem(new SecurityRequirement().addList("bearer"))
                 .components(new Components()
                         .addSecuritySchemes("bearer",
                                 new SecurityScheme()
-                                        .type(SecurityScheme.Type.HTTP)
-                                        .scheme("bearer")
+                                        .type(SecurityScheme.Type.APIKEY)
+                                        .scheme("X-API-KEY")
                                         .bearerFormat("JWT")
                                         .flows(new OAuthFlows()
                                                 .password(new OAuthFlow()
                                                         .refreshUrl("/oauth/token")
                                                         .tokenUrl("/oauth/token")
                                                         .scopes(new Scopes().addString("users", "scope задач"))
-                                                ))))*/
+                                                ))))
                 .info(new Info().title("Board Service")
                         .description("Board Service")
                         .version("v0.0.1"));

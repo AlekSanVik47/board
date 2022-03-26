@@ -21,14 +21,26 @@ spring:
     url: jdbc:postgresql://localhost/test
     username: user
     password: 12345
-#components:
- # securitySchemes:
-  #  bearerAuth:
-  #    type: http
-   #   scheme: bearer
-  #    bearerFormat: JWT
-#secure:
- # bearerAuth: []
+
+components:
+  securitySchemes:
+    ApiKeyAuth:        # arbitrary name for the security scheme
+      type: apiKey
+      in: query       # can be "header", "query" or "cookie"
+      name: X-API-KEY  # name of the header, query parameter or cookie
+# 2) Apply the API key globally to all operations
+security:
+   ApiKeyAuth: []
+
+paths:
+  /something:
+    get:
+      # Operation-specific security:
+      security:
+        ApiKeyAuth: []
+      responses:
+        '200':
+          description: OK (successfully authenticated)
 
   #jpa.hibernate.ddl-auto: update
   jpa.database-platform: org.hibernate.dialect.PostgreSQLDialect

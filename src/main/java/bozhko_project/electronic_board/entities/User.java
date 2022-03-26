@@ -32,7 +32,7 @@ public class User  {
 	private State state;
 
 
-	@Column(name = "login")
+	@Column(name = "login",unique = true)
 	private String login;
 
 	@Column(name = "password")
@@ -44,10 +44,10 @@ public class User  {
 	@Column
 	private String surname;
 
-	@Column
+	@Column(unique = true)
 	private String email;
 
-	@Column
+	@Column(unique = true)
 	private String phone;
 
 	@Enumerated(value = EnumType.STRING)
