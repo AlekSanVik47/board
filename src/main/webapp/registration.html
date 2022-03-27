@@ -4,41 +4,40 @@
     <meta charset="UTF-8">
     <title>Регистрация</title>
     <style>
+
         ul li {
-         list-style: none;
+          list-style: none;
         }
         li {
-         margin: 10px ;
-         text-align: right;
-         margin: 15px 10px auto -1000px;
-         padding: 0 500px 0 10px;
+          text-align: right;
+          margin: 10px 0;
         }
-        input{
-        display: inline;
-        vertical-align: right;
-        width: 20%;
-        margin: 0 15px;
+        input {
+          width: 20%;
+          margin: 0 660px 0 5px;
         }
-
-
-
+        h2 {
+          margin: 0 700px 0 100px;
+        }
+        form {
+          display: inline-block;
+          margin: -20px 0 0 -40px;
+        }
 
     </style>
 </head>
 <body>
 <form method="POST" action="/regForm">
     <ul>
-
-        <div>
             <li><h2>Регистрация</h2></li>
             <li>
             <label>Имя:
-                <input name="name" placeholder="Введите имя...">
+                <input type="text" name="name" placeholder="Введите имя..."  autofocus="true">
             </label>
         </li>
         <li>
             <label>Фамилия:
-                <input name="surname" placeholder="Введите фамилию...">
+                <input type="text" name="surname" placeholder="Введите фамилию...">
             </label>
         </li>
         <li>
@@ -58,13 +57,13 @@
         </li>
         <li>
             <label>Телефон:
-                <input name="phone" placeholder="Введите номер телефона...">
+                <input type="tel" name="phone" placeholder="Введите номер телефона...">
             </label>
         </li>
         <li>
             <input type="submit" value="Регистрация">
         </li>
-        </div>
+
     </ul>
 
 </form>
