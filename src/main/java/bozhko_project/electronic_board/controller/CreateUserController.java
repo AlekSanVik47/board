@@ -26,7 +26,7 @@ public class CreateUserController {
     @Autowired
     private final UserServiceImpl service;
 
-    @Operation(description = "Создание пользователя")
+    @Operation(description = "Регистрация пользователя")
     @PostMapping(
             value = "/v1/create-user",
             produces = {"application/json"},

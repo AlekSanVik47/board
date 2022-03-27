@@ -12,13 +12,13 @@ import javax.persistence.Id;
 @Getter
 @Setter
 @Data
-@Schema(description = "Запрос на обновления данных пользователя")
+@Schema(description = "Обновления данных пользователя")
 public class UserUpdateDTO {
 
-   @Schema(description = "Id пользователя")
-   @Id
-   @GeneratedValue(strategy = GenerationType.SEQUENCE)
-   private Integer id;
+//   @Schema(description = "Id пользователя")
+//   @Id
+//   @GeneratedValue(strategy = GenerationType.SEQUENCE)
+//   private Integer id;
 
     @Schema(description = "Имя пользователя")
     private String name;
@@ -38,8 +38,8 @@ public class UserUpdateDTO {
     @Schema (description = "Пароль")
     private String password;
 
-    @Schema (description = "статус")
-    private Status status = Status.NEW;
+//    @Schema (description = "статус")
+//    private Status status = Status.NEW;
 
 
 }

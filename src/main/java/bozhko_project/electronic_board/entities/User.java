@@ -26,9 +26,11 @@ public class User  {
 	private Long id;
 
 	@Enumerated(value = EnumType.STRING)
+	@Column(columnDefinition = "USER")
 	private Role role;
 
 	@Enumerated(value = EnumType.STRING)
+	@Column(columnDefinition = "CONFIRMED")
 	private State state;
 
 
@@ -51,7 +53,7 @@ public class User  {
 	private String phone;
 
 	@Enumerated(value = EnumType.STRING)
-	@Column (name = "status", nullable = false)
+	@Column (name = "status", nullable = false, columnDefinition = "NEW")
 	private Status status;
 
 

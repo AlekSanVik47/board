@@ -1,6 +1,7 @@
 package bozhko_project.electronic_board.controller;
 
 import bozhko_project.electronic_board.dto.UserUpdateDTO;
+import bozhko_project.electronic_board.entities.User;
 import bozhko_project.electronic_board.mapper.UserMapper;
 import bozhko_project.electronic_board.service.UserUpdateService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -9,6 +10,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +25,8 @@ public class UserUpdateController {
     private final UserUpdateService updateService;
     @Autowired
     private final UserMapper userMapper;
+	@Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Operation(description = "Обновление логина пользователя")
     @PutMapping(value = "/v1/user/{userId}")

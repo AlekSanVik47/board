@@ -2,6 +2,8 @@ package bozhko_project.electronic_board.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,11 +19,6 @@ import javax.validation.constraints.NotBlank;
 @Data
 @Schema(description = "Регистрация пользователя")
 public class UserCreationDTO {
-    @NotBlank
-    @Schema(description = "Идентификатор")
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
 
     @NotBlank
     @Schema(description = "Логин пользователя")
@@ -46,11 +43,6 @@ public class UserCreationDTO {
     @NotBlank
     @Schema(description = "пароль")
     private String password;
-
-    @NotBlank
-    @Schema (description = "статус")
-    private Status status;
-
 
 
 }

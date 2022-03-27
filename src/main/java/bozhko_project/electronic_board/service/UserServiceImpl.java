@@ -9,6 +9,7 @@ import bozhko_project.electronic_board.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,9 +19,12 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService{
 	@Autowired
 	private final UserMapper userMapper;
-
 	@Autowired
 	private final UserRepository userRepository;
+//	@Autowired
+//	private PasswordEncoder passwordEncoder;
+
+
 
 	public UserServiceImpl(UserMapper userMapper, UserRepository userRepository) {
 		this.userMapper = userMapper;
@@ -40,6 +44,7 @@ public class UserServiceImpl implements UserService{
 		if (findByUserLogin(creationDTO.getLogin())!=null) {
 			return false;
 		}
+//		user.setPassword(passwordEncoder.encode(creationDTO.getPassword()));
 		user.setStatus(Status.valueOf("NEW"));
 		user.setRole(User.Role.valueOf("USER"));
 		user.setState(User.State.valueOf("CONFIRMED"));
