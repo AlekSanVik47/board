@@ -4,30 +4,27 @@ import bozhko_project.electronic_board.dto.UserCreationDTO;
 import bozhko_project.electronic_board.dto.UserDTO;
 import bozhko_project.electronic_board.dto.UserUpdateDTO;
 import bozhko_project.electronic_board.entities.User;
-import com.sun.xml.bind.v2.runtime.output.Encoded;
-import org.hibernate.exception.spi.Configurable;
 import org.mapstruct.*;
-import org.springframework.data.convert.ConfigurableTypeInformationMapper;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Component;
 
 import static org.mapstruct.ReportingPolicy.IGNORE;
 
 
-@Mapper(componentModel = "spring", unmappedTargetPolicy = IGNORE)
+@Mapper(componentModel = "spring", unmappedTargetPolicy = IGNORE)//, uses = BCryptPasswordEncoder.class)
 public interface UserMapper{
+    /*@Mapping(source = "password", target = "password", qualifiedBy = EncodedMapping.class)*/
 
 
     UserDTO userToUserDTO(User entity);
 
-
+//    @Mapping(source = "password", target = "password", qualifiedBy = EncodedMapping.class)
     UserUpdateDTO userToUpdateDTO(User entity);
 
 
     UserCreationDTO createNewUser(User entity);
 
+
     User userCreationToUser(UserCreationDTO dto);
+
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     User updateUser(UserUpdateDTO dto, @MappingTarget User entity);
@@ -42,6 +39,7 @@ public interface UserMapper{
     User updateUser(UserUpdateDTO dto, Integer id);
 
     User updateUser(UserUpdateDTO dto, String surname);
+
 
     User getUserById(Long id);
 }

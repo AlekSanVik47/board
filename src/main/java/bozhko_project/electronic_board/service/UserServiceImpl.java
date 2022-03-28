@@ -21,8 +21,8 @@ public class UserServiceImpl implements UserService{
 	private final UserMapper userMapper;
 	@Autowired
 	private final UserRepository userRepository;
-//	@Autowired
-//	private PasswordEncoder passwordEncoder;
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 
 
@@ -44,7 +44,7 @@ public class UserServiceImpl implements UserService{
 		if (findByUserLogin(creationDTO.getLogin())!=null) {
 			return false;
 		}
-//		user.setPassword(passwordEncoder.encode(creationDTO.getPassword()));
+		user.setPassword(passwordEncoder.encode(creationDTO.getPassword()));
 		user.setStatus(Status.valueOf("NEW"));
 		user.setRole(User.Role.valueOf("USER"));
 		user.setState(User.State.valueOf("CONFIRMED"));
