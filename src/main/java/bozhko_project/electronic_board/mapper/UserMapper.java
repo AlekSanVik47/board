@@ -9,7 +9,7 @@ import org.mapstruct.*;
 import static org.mapstruct.ReportingPolicy.IGNORE;
 
 
-@Mapper(componentModel = "spring", unmappedTargetPolicy = IGNORE)//, uses = BCryptPasswordEncoder.class)
+@Mapper(componentModel = "spring", unmappedTargetPolicy = IGNORE/*, uses = BCryptPasswordEncoder.class*/)
 public interface UserMapper{
     /*@Mapping(source = "password", target = "password", qualifiedBy = EncodedMapping.class)*/
 

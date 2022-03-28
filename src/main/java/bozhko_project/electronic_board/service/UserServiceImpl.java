@@ -26,9 +26,10 @@ public class UserServiceImpl implements UserService{
 
 
 
-	public UserServiceImpl(UserMapper userMapper, UserRepository userRepository) {
+	public UserServiceImpl(UserMapper userMapper, UserRepository userRepository, PasswordEncoder passwordEncoder) {
 		this.userMapper = userMapper;
 		this.userRepository = userRepository;
+		this.passwordEncoder = passwordEncoder;
 	}
 
 	@Transactional
