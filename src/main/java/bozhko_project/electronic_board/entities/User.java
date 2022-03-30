@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Data
@@ -17,6 +18,9 @@ public class User  {
 	public enum Role{
 		USER,ADMIN
 	};
+//	@ManyToMany(fetch = FetchType.EAGER)
+//	private Set<Role> roles;
+
 	public enum State{
 		NOT_CONFIRMED, CONFIRMED, DELETE, BANNED
 	};
