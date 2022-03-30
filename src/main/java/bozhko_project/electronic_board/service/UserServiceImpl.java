@@ -1,7 +1,6 @@
 package bozhko_project.electronic_board.service;
 
-import bozhko_project.electronic_board.dto.Status;
-import bozhko_project.electronic_board.dto.UserCreationDTO;
+import bozhko_project.electronic_board.dto.*;
 import bozhko_project.electronic_board.entities.User;
 import bozhko_project.electronic_board.entities.authorization.UserDetailsImpl;
 import bozhko_project.electronic_board.mapper.UserMapper;
@@ -13,17 +12,17 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 	@Autowired
 	private final UserMapper userMapper;
 	@Autowired
 	private final UserRepository userRepository;
 	@Autowired
 	private PasswordEncoder passwordEncoder;
-
 
 
 	public UserServiceImpl(UserMapper userMapper, UserRepository userRepository, PasswordEncoder passwordEncoder) {
@@ -40,9 +39,9 @@ public class UserServiceImpl implements UserService{
 
 	@Transactional
 	@Override
-	public boolean save(UserCreationDTO creationDTO) {
+	public boolean saveUser(UserCreationDTO creationDTO) {
 		User user = userMapper.userCreationToUser(creationDTO);
-		if (findByUserLogin(creationDTO.getLogin())!=null) {
+		if (findByUserLogin(creationDTO.getLogin()) != null) {
 			return false;
 		}
 		user.setPassword(passwordEncoder.encode(creationDTO.getPassword()));
@@ -53,6 +52,7 @@ public class UserServiceImpl implements UserService{
 		return true;
 	}
 
+
 	@Override
 	public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
 		Optional<User> userOptional = Optional.ofNullable(userRepository.findUserByLogin(login));
@@ -60,5 +60,61 @@ public class UserServiceImpl implements UserService{
 		return new UserDetailsImpl(user);
 	}
 
+	public User getUserByPhone(String phone) {
+		return userRepository.findUserByPhone(phone);
+	}
 
+	public List<User> getRegisteredUsers() {
+		return userRepository.findAll();
+	}
+
+	public UserDTO getUserById(Long id) {
+		return userMapper.userToUserDTO(userRepository.getById(id));
+	}
+
+	public void userUpdateLoginDB(Long id, UserUpdateDTO dto) throws AssertionError {
+		User user = userRepository.findById(id).orElse(null);
+		if (user == null) throw new AssertionError();
+		user.setLogin(dto.getLogin());
+		userRepository.saveAndFlush(user);
+	}
+
+	public void userAccountUpdate(UserUpdateDTO dto, Integer id) {
+		User user = userMapper.updateUser(dto, id);
+		user.setStatus(Status.valueOf("NEW"));
+		user.setRole(User.Role.valueOf("USER"));
+		user.setState(User.State.valueOf("CONFIRMED"));
+		userRepository.saveAndFlush(user);
+	}
+
+	@Transactional
+	public void deleteUserById(Long id) {
+		userRepository.deleteById(id);
+	}
+
+	public UserAuthDTO authUser(UserAuthDTO dto, String login) {
+		User user = userRepository.findUserByLogin(login);
+		if (dto.getLogin().equals(user.getLogin()) && dto.getPassword().equals(user.getPassword())) {
+
+			return dto;
+		}
+		return dto;
+	}
 }
+
+
+
+//	private void checkCurrentUserUpdatePermission(Integer userId) throws CannotEditOtherUsersException {
+//		UserDTO currentUser =getCurrentUser();
+//		Optional<User> optionalUser = userRepository.findById(userId);
+//				if (optionalUser.isPresent()&&!optionalUser.get().getPhone().equals(currentUser.getLogin())&&!currentUser.getRole().equals("ADMIN")){
+//					throw new CannotEditOtherUsersException();
+//				}
+//	}
+//	private UserDTO getCurrentUser() {
+//		SecurityContext securityContext = SecurityContextHolder.getContext();
+//		String login = securityContext.getAuthentication().getPrincipal().toString();
+//		String role = securityContext.getAuthentication().getAuthorities().stream().findAny().get().getAuthority();
+//		return new UserDTO(login, role);
+//	}
+

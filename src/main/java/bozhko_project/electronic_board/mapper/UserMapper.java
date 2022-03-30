@@ -1,5 +1,6 @@
 package bozhko_project.electronic_board.mapper;
 
+import bozhko_project.electronic_board.dto.UserAuthDTO;
 import bozhko_project.electronic_board.dto.UserCreationDTO;
 import bozhko_project.electronic_board.dto.UserDTO;
 import bozhko_project.electronic_board.dto.UserUpdateDTO;
@@ -12,7 +13,6 @@ import static org.mapstruct.ReportingPolicy.IGNORE;
 @Mapper(componentModel = "spring", unmappedTargetPolicy = IGNORE/*, uses = BCryptPasswordEncoder.class*/)
 public interface UserMapper{
     /*@Mapping(source = "password", target = "password", qualifiedBy = EncodedMapping.class)*/
-
 
     UserDTO userToUserDTO(User entity);
 

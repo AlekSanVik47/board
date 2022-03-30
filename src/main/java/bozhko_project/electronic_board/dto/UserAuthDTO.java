@@ -14,6 +14,7 @@ import javax.persistence.Id;
 @Data
 @Schema(description = "Авторизация пользователя")
 public class UserAuthDTO {
+	private Long id;
 
 	@Schema(description = "Логин пользователя")
 	@Id
