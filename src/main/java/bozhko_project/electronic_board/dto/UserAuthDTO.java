@@ -1,24 +1,20 @@
 package bozhko_project.electronic_board.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@Getter
+@Setter
 @Schema(description = "Авторизация пользователя")
 public class UserAuthDTO {
-	private Long id;
+//	private Long id;
 
 	@Schema(description = "Логин пользователя")
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private String login;
 
 	@Schema(description = "пароль")

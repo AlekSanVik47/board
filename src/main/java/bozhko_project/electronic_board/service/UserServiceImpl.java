@@ -92,13 +92,11 @@ public class UserServiceImpl implements UserService {
 		userRepository.deleteById(id);
 	}
 
-	public UserAuthDTO authUser(UserAuthDTO dto, String login) {
-		User user = userRepository.findUserByLogin(login);
-		if (dto.getLogin().equals(user.getLogin()) && dto.getPassword().equals(user.getPassword())) {
-
-			return dto;
+	public void authUser(UserAuthDTO dto) {
+		User user = userRepository.findUserByLogin(dto.getLogin());
+		if (dto.getPassword().equals(user.getPassword())) {
+			userMapper.userAuthDTO(dto);
 		}
-		return dto;
 	}
 }
 

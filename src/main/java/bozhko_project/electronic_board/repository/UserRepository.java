@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 public interface UserRepository extends JpaRepository<User, Long> {
  User findUserByPhone (String phone);
 
+
  @Transactional
  @Modifying
  @Query("delete from User u where u.id = ?1")

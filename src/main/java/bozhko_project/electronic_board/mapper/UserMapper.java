@@ -19,6 +19,7 @@ public interface UserMapper{
 //    @Mapping(source = "password", target = "password", qualifiedBy = EncodedMapping.class)
     UserUpdateDTO userToUpdateDTO(User entity);
 
+    UserAuthDTO userAuthDTO(UserAuthDTO dto);
 
     UserCreationDTO createNewUser(User entity);
 
