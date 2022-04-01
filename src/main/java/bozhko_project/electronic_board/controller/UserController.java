@@ -17,13 +17,14 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
 @Controller
 @RequestMapping
 @RequiredArgsConstructor
-@Tag(name = "CreateUserController", description = "API контролера пользователя")
+@Tag(name = "UserController", description = "API контролера пользователя")
 @Validated
 public class UserController {
 //    @Autowired
@@ -49,7 +50,7 @@ public class UserController {
                                              @RequestBody(required = false) UserCreationDTO request,
                                              @RequestParam(required = false) String login) {
         service.saveUser(request);
-        return ResponseEntity.ok("/user/login");
+        return ResponseEntity.ok("login");
     }
 
 //    @Operation(description = "Авторизация пользователя")
@@ -64,13 +65,13 @@ public class UserController {
 //    }
 
     @Operation(description = "Авторизация пользователя")
-    @PostMapping(value = "/user/login")
+    @PostMapping(value = "/login")
     public ResponseEntity<String> userAuthorization(@Parameter(description = "Авторизация", required = true)
                                                         @RequestBody(required = false) UserAuthDTO request) {
         usersService.authUser(request);
-        return ResponseEntity.ok("Успешная авторизация");
-
+        return ResponseEntity.ok("login");
     }
+
 
 
     @Operation(description = "Удаление пользователя")

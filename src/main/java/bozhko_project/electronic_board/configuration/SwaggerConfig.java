@@ -33,7 +33,7 @@ public class SwaggerConfig {
                 .components(new Components()
                         .addSecuritySchemes("bearer",
                                 new SecurityScheme()
-                                        .type(SecurityScheme.Type.APIKEY)
+                                        .type(SecurityScheme.Type.OAUTH2)
                                         .scheme("X-API-KEY")
                                         .bearerFormat("JWT")
                                         .flows(new OAuthFlows()

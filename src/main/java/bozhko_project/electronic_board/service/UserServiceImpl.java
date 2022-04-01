@@ -81,6 +81,7 @@ public class UserServiceImpl implements UserService {
 
 	public void userAccountUpdate(UserUpdateDTO dto, Integer id) {
 		User user = userMapper.updateUser(dto, id);
+		user.setPassword(passwordEncoder.encode(dto.getPassword()));
 		user.setStatus(Status.valueOf("NEW"));
 		user.setRole(User.Role.valueOf("USER"));
 		user.setState(User.State.valueOf("CONFIRMED"));

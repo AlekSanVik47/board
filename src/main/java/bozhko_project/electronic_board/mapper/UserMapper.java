@@ -6,17 +6,18 @@ import bozhko_project.electronic_board.dto.UserDTO;
 import bozhko_project.electronic_board.dto.UserUpdateDTO;
 import bozhko_project.electronic_board.entities.User;
 import org.mapstruct.*;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import static org.mapstruct.ReportingPolicy.IGNORE;
 
 
-@Mapper(componentModel = "spring", unmappedTargetPolicy = IGNORE/*, uses = BCryptPasswordEncoder.class*/)
+@Mapper(componentModel = "spring", unmappedTargetPolicy = IGNORE)
 public interface UserMapper{
-    /*@Mapping(source = "password", target = "password", qualifiedBy = EncodedMapping.class)*/
 
     UserDTO userToUserDTO(User entity);
 
-//    @Mapping(source = "password", target = "password", qualifiedBy = EncodedMapping.class)
+
     UserUpdateDTO userToUpdateDTO(User entity);
 
     UserAuthDTO userAuthDTO(UserAuthDTO dto);

@@ -35,6 +35,9 @@ dependencies {
     testImplementation 'io.rest-assured:rest-assured:4.5.1'
     testImplementation 'io.rest-assured:json-schema-validator:4.5.1'
     testImplementation 'io.rest-assured:json-path:4.5.1'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: '2.6.5'
+
+
 }
 
 test {
