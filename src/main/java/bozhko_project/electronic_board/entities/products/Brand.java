@@ -22,6 +22,5 @@ public class Brand {
 	@Column(name = "brand", unique = true)
 	private String brand;
 
-	@Column (name = "productName")
-	private String productName;
+
 }
