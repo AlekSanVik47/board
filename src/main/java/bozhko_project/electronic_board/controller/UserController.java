@@ -1,9 +1,9 @@
 package bozhko_project.electronic_board.controller;
 
-import bozhko_project.electronic_board.dto.UserAuthDTO;
-import bozhko_project.electronic_board.dto.UserCreationDTO;
-import bozhko_project.electronic_board.dto.UserUpdateDTO;
-import bozhko_project.electronic_board.entities.User;
+import bozhko_project.electronic_board.dto.dto_user.UserAuthDTO;
+import bozhko_project.electronic_board.dto.dto_user.UserCreationDTO;
+import bozhko_project.electronic_board.dto.dto_user.UserUpdateDTO;
+import bozhko_project.electronic_board.entities.user_entities.User;
 import bozhko_project.electronic_board.mapper.UserMapper;
 import bozhko_project.electronic_board.repository.UserRepository;
 import bozhko_project.electronic_board.service.UserServiceImpl;
@@ -17,7 +17,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -44,7 +43,7 @@ public class UserController {
 
     @Operation(description = "Регистрация пользователя")
     @PostMapping(
-            value = "/v1/create-user"
+            value = "/create-user"
     )
     public ResponseEntity<String> createUser(@Parameter(description = "Запрос на создание пользователя", required = true)
                                              @RequestBody(required = false) UserCreationDTO request,
@@ -71,11 +70,18 @@ public class UserController {
         usersService.authUser(request);
         return ResponseEntity.ok("login");
     }
-
+//
+//    @Operation(description = "страница авторизации")
+//    @RequestMapping(value = "/login")
+//    public String authorizationPage (Model model){
+//        UserAuthDTO dto = new UserAuthDTO();
+//        model.addAttribute("dto", dto);
+//        return "login";
+//    }
 
 
     @Operation(description = "Удаление пользователя")
-    @DeleteMapping(value = "/v1/users-delete/{userId}")
+    @DeleteMapping(value = "/user/users-delete/{userId}")
     public ResponseEntity<Object> deleteUser(@Parameter(description = "Идентификатор для удаления", required = true)
                                              @PathVariable(value = "userId") Long userId) {
         usersService.deleteUserById(userId);
@@ -105,7 +111,7 @@ public class UserController {
     }
 
     @Operation(description = "Обновление логина пользователя")
-    @PutMapping(value = "/v1/user/{userId}")
+    @PutMapping(value = "/user/{userId}")
     public ResponseEntity<String> updateUserLoginDBController(
             @Parameter(description = "Идентификатор пользователя", required = true)
             @PathVariable(value = "userId") Long userId,

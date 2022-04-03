@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Log in with your account</title>
 </head>
 <body>
 
 <div>
-    <form th:action="@{/login}" method="POST" >
+    <form method="POST" action="/user">
         <h2>Вход в систему</h2>
         <div>
             <input name="login" type="text" placeholder="Введите логин..."

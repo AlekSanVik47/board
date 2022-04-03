@@ -1,13 +1,11 @@
 package bozhko_project.electronic_board.mapper;
 
-import bozhko_project.electronic_board.dto.UserAuthDTO;
-import bozhko_project.electronic_board.dto.UserCreationDTO;
-import bozhko_project.electronic_board.dto.UserDTO;
-import bozhko_project.electronic_board.dto.UserUpdateDTO;
-import bozhko_project.electronic_board.entities.User;
+import bozhko_project.electronic_board.dto.dto_user.UserAuthDTO;
+import bozhko_project.electronic_board.dto.dto_user.UserCreationDTO;
+import bozhko_project.electronic_board.dto.dto_user.UserDTO;
+import bozhko_project.electronic_board.dto.dto_user.UserUpdateDTO;
+import bozhko_project.electronic_board.entities.user_entities.User;
 import org.mapstruct.*;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 import static org.mapstruct.ReportingPolicy.IGNORE;
 

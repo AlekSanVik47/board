@@ -2,6 +2,8 @@ plugins {
     id 'org.springframework.boot' version '2.6.2'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
+//    id 'eclipse'
+//    id 'org.springframework.boot.experimental.thin-launcher'
 
 }
 
@@ -9,17 +11,23 @@ group = 'ru.bozhko_project'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
+//buildscript {
+//    ext {
+//        springBootPlugin = 'org.springframework.boot:spring-boot-gradle-plugin'
+//        springBootVersion = '2.4.0'
+//    }
+
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter:2.6.4'
-    implementation 'org.springframework.boot:spring-boot-starter-web:2.6.4'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.6.4'
+    implementation 'org.springframework.boot:spring-boot-starter:2.6.5'
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.6.5'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.6.5'
     implementation 'org.flywaydb:flyway-core:8.5.4'
     implementation 'org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.6.3'
-    implementation 'org.springframework.boot:spring-boot-starter-security:2.6.4'
+    implementation 'org.springframework.boot:spring-boot-starter-security:2.6.5'
     implementation 'org.springframework.security.oauth:spring-security-oauth2:2.5.1.RELEASE'
     implementation 'org.springframework.security:spring-security-jwt:1.1.1.RELEASE'
     implementation 'org.projectlombok:lombok:1.18.22'
@@ -36,10 +44,17 @@ dependencies {
     testImplementation 'io.rest-assured:json-schema-validator:4.5.1'
     testImplementation 'io.rest-assured:json-path:4.5.1'
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: '2.6.5'
-
-
+    implementation group: 'org.thymeleaf', name: 'thymeleaf', version: '3.1.0.M1'
+    implementation 'org.apache.tomcat.embed:tomcat-embed-jasper:10.1.0-M12'
 }
-
+//springBoot {
+//    mainClassName = 'bozhko_project.electronic_board.ElectronicBoardApplication'
+//}
+//
+//bootJar {
+////    This is overridden by the mainClassName in springBoot{} and added here for reference purposes.
+//    mainClassName = 'bozhko_project.electronic_board.ElectronicBoardApplication'
+//}
 test {
     useJUnitPlatform()
 }

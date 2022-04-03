@@ -1,5 +1,7 @@
 package bozhko_project.electronic_board.configuration;
 
+import bozhko_project.electronic_board.entities.authorization.UserDetailsImpl;
+import bozhko_project.electronic_board.service.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -12,17 +14,18 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
 @EnableGlobalMethodSecurity(securedEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-	//@Autowired
-	//private DataSource dataSource;
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	@Autowired
-	private UserDetailsService userDetailsService;
+	private UserServiceImpl userServiceImpl;
 
 	/*@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -30,8 +33,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	}*/
 
 	@Autowired
-	protected void configureGlobal(AuthenticationManagerBuilder auth, BCryptPasswordEncoder bCryptPasswordEncoder) throws Exception {
-		auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
+	protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+		auth.userDetailsService(userServiceImpl).passwordEncoder(passwordEncoder);
 	}
 
 //	@Bean
@@ -47,19 +50,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.csrf()
-				.disable()
+		http.csrf().disable()
 				.authorizeRequests()
-				.antMatchers("/", "/user/login").permitAll()
+				.antMatchers("/", "/login","/create-user").permitAll()
+				.antMatchers("/user").authenticated()
+				.antMatchers("/user/**").hasAnyAuthority("ADMIN")
 				.and()
-				.httpBasic()
-				.and()
-				.authorizeRequests()
-				.anyRequest()
-				.permitAll()
-				.and()
-				.sessionManagement()
-				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+				.formLogin()
+				.loginPage("/login")
+				.defaultSuccessUrl("/user")
+				.usernameParameter("login")
+				.passwordParameter("password")
+				.permitAll();
+
 	}
 
 }

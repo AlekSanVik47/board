@@ -4,13 +4,17 @@ server:
 spring:
   flyway:
     enabled: true
+#    thymeleaf:
+##      prefix:
+#        classpath:  /templates/
+#        suffix:   html
  # main:
  #   web-application-type:
   application:
     name: bozhko_project
   mvc:
     pathmatch:
-      matching-strategy: ant_path_matcher
+      matching-strategy: #ant_path_matcher
   jackson:
     date-format: com.fasterxml.jackson.databind.util.ISO8601DateFormat
   hibernate:
@@ -49,6 +53,7 @@ springfox:
     swagger:
       v2:
         path: /v3/api-docs
+
 
 
   #spring.jpa.properties.hibernate.format_sql=false

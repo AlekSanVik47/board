@@ -7,7 +7,7 @@ create table users (
 	email varchar(100) not null, unique(email),
 	password varchar(100) not null, unique (password),
 	status varchar(50)not null DEFAULT 'NEW', FOREIGN KEY(status) REFERENCES user_status(status),
-	role VARCHAR(50)not null DEFAULT 'USER', FOREIGN KEY(role) REFERENCES user_role(role),
+	role_id VARCHAR(50)not null DEFAULT 'USER', FOREIGN KEY(role_id) REFERENCES user_role(role),
 	state VARCHAR(50)not null DEFAULT 'CONFIRMED', FOREIGN KEY(state) REFERENCES user_state(state)
 );
 
@@ -20,7 +20,7 @@ create table users (
 --
 
 
-insert into users (login, surname, name, phone, email, password, role) VALUES
+insert into users (login, surname, name, phone, email, password, role_id) VALUES
 ('Alex', 'Ivanov', 'Alexey', '+79053451338', 'test@mail.ru', 'pass1@', 'ADMIN'),
  ('Jon', 'Petrov', 'Alexander', '+79053551338', 'test1@mail.ru', 'pass2@', 'ADMIN');
 

@@ -1,20 +1,25 @@
 package bozhko_project.electronic_board.service;
 
-import bozhko_project.electronic_board.dto.*;
-import bozhko_project.electronic_board.entities.User;
+import bozhko_project.electronic_board.dto.dto_user.*;
+import bozhko_project.electronic_board.entities.user_entities.User;
 import bozhko_project.electronic_board.entities.authorization.UserDetailsImpl;
 import bozhko_project.electronic_board.mapper.UserMapper;
 import bozhko_project.electronic_board.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
+
+@RequiredArgsConstructor
+@Component
 @Service
 public class UserServiceImpl implements UserService {
 	@Autowired
@@ -24,12 +29,6 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
-
-	public UserServiceImpl(UserMapper userMapper, UserRepository userRepository, PasswordEncoder passwordEncoder) {
-		this.userMapper = userMapper;
-		this.userRepository = userRepository;
-		this.passwordEncoder = passwordEncoder;
-	}
 
 	@Transactional
 	@Override
@@ -46,7 +45,7 @@ public class UserServiceImpl implements UserService {
 		}
 		user.setPassword(passwordEncoder.encode(creationDTO.getPassword()));
 		user.setStatus(Status.valueOf("NEW"));
-		user.setRole(User.Role.valueOf("USER"));
+		user.setRole_id(User.Role.valueOf("USER"));
 		user.setState(User.State.valueOf("CONFIRMED"));
 		userRepository.save(user);
 		return true;
@@ -83,7 +82,7 @@ public class UserServiceImpl implements UserService {
 		User user = userMapper.updateUser(dto, id);
 		user.setPassword(passwordEncoder.encode(dto.getPassword()));
 		user.setStatus(Status.valueOf("NEW"));
-		user.setRole(User.Role.valueOf("USER"));
+		user.setRole_id(User.Role.valueOf("USER"));
 		user.setState(User.State.valueOf("CONFIRMED"));
 		userRepository.saveAndFlush(user);
 	}

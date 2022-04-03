@@ -1,4 +1,4 @@
-package bozhko_project.electronic_board.entities;
+package bozhko_project.electronic_board.entities.user_entities;
 
 
 
@@ -7,9 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Data
@@ -18,9 +16,19 @@ import javax.persistence.Table;
 @Table(name = "user_role")
 public class Role implements GrantedAuthority {
 
+//	public enum UserRole {
+//		ADMIN,USER;
+//	}
+
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String role;
+
+
+
+	@Column(columnDefinition = "USER")
+	private Role role_id;
+
 	@Override
 	public String getAuthority() {
 		return null;

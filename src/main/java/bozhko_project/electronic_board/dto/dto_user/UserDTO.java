@@ -1,4 +1,4 @@
-package bozhko_project.electronic_board.dto;
+package bozhko_project.electronic_board.dto.dto_user;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
