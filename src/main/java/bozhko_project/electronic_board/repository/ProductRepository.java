@@ -9,7 +9,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
-	Product findByBrand(Brand brand);
-
-	Product findByCategory_id(String category_id);
 }
