@@ -52,7 +52,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable()
 				.authorizeRequests()
-				.antMatchers("/", "/login","/create-user").permitAll()
+				.antMatchers("/","/create-user").permitAll()
 				.antMatchers("/user").authenticated()
 				.antMatchers("/user/**").hasAnyAuthority("ADMIN")
 				.and()
