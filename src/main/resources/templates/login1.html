@@ -1,0 +1,23 @@
+<!DOC TYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Log in with your account</title>
+</head>
+<body>
+
+<div>
+    <form th:action="@{/login}" method="POST" >
+        <h2>Вход в систему</h2>
+        <div>
+            <input name="login" type="text" placeholder="Введите логин..."
+                   autofocus="true"/>
+            <input type="password" name="password" type="password" placeholder="Введите пароль..."/>
+            <button type="submit">Войти</button>
+            <h4><a href="/create-user">Зарегистрироваться</a></h4>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

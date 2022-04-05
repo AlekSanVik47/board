@@ -14,7 +14,7 @@ spring:
     name: bozhko_project
   mvc:
     pathmatch:
-      matching-strategy: #ant_path_matcher
+      matching-strategy: ant_path_matcher
   jackson:
     date-format: com.fasterxml.jackson.databind.util.ISO8601DateFormat
   hibernate:
@@ -37,7 +37,7 @@ security:
    ApiKeyAuth: []
 
 paths:
-  /something:
+  something:
     get:
       # Operation-specific security:
       security:
