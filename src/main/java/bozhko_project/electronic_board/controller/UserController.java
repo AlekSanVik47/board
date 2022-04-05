@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
+@RestController
 @RequestMapping
 @RequiredArgsConstructor
 @Tag(name = "UserController", description = "API контролера пользователя")
@@ -64,12 +65,21 @@ public class UserController {
 //    }
 
     @Operation(description = "Авторизация пользователя")
-    @PostMapping(value = "/login")
+    @RequestMapping(value = "/login", method = RequestMethod.PUT)
     public ResponseEntity<String> userAuthorization(@Parameter(description = "Авторизация", required = true)
                                                         @RequestBody(required = false) UserAuthDTO request) {
         usersService.authUser(request);
         return ResponseEntity.ok("login");
     }
+
+    @Operation(description = "Страница авторизации")
+    @GetMapping("/login")
+    public String loginPage(){
+        return "login";
+    }
+
+
+
 //
 //    @Operation(description = "страница авторизации")
 //    @RequestMapping(value = "/login")
