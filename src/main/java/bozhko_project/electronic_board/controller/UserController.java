@@ -44,13 +44,13 @@ public class UserController {
 
     @Operation(description = "Регистрация пользователя")
     @PostMapping(
-            value = "/create-user"
+            value = "/create-user.html"
     )
     public ResponseEntity<String> createUser(@Parameter(description = "Запрос на создание пользователя", required = true)
                                              @RequestBody(required = false) UserCreationDTO request,
                                              @RequestParam(required = false) String login) {
         service.saveUser(request);
-        return ResponseEntity.ok("login");
+        return ResponseEntity.ok("login.html");
     }
 
 //    @Operation(description = "Авторизация пользователя")

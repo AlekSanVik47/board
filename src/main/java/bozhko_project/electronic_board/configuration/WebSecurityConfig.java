@@ -48,12 +48,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable()
 				.authorizeRequests()
-				.antMatchers("/","/create-user").permitAll()
+				.antMatchers("/","/create-user", "*.html","/oauth/**",
+						"/v3/api-docs.yaml", "/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**").permitAll()
 				.antMatchers("/user").authenticated()
 				.antMatchers("/user/**").hasAnyAuthority("ADMIN")
 				.and()
 				.formLogin()
-				.loginPage("/login")
+				.loginPage("/login.html")
 				.defaultSuccessUrl("/user")
 				.usernameParameter("login")
 				.passwordParameter("password")

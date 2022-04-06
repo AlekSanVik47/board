@@ -34,22 +34,22 @@ components:
       name: X-API-KEY  # name of the header, query parameter or cookie
 # 2) Apply the API key globally to all operations
 security:
-   ApiKeyAuth: []
+  signingKey: oauth-sig-key
 
-paths:
-  /users:
-    get:
-      summary: Returns a list of users.
-      description: Optional extended description in CommonMark or HTML.
-      responses:
-        '200':    # status code
-          description: A JSON array of user names
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: string
+#paths:
+#  /users:
+#    get:
+#      summary:
+#      description:
+#      responses:
+#        '200':    # status code
+#          description:
+#          content:
+#            application/json:
+#              schema:
+#                type: array
+#                items:
+#                  type: string
 
   #jpa.hibernate.ddl-auto: update
   jpa.database-platform: org.hibernate.dialect.PostgreSQLDialect
