@@ -44,13 +44,13 @@ public class UserController {
 
     @Operation(description = "Регистрация пользователя")
     @PostMapping(
-            value = "/create-user.html"
+            value = "/create-user"
     )
     public ResponseEntity<String> createUser(@Parameter(description = "Запрос на создание пользователя", required = true)
                                              @RequestBody(required = false) UserCreationDTO request,
                                              @RequestParam(required = false) String login) {
         service.saveUser(request);
-        return ResponseEntity.ok("login.html");
+        return ResponseEntity.ok("login");
     }
 
 //    @Operation(description = "Авторизация пользователя")
@@ -77,17 +77,6 @@ public class UserController {
     public String loginPage(){
         return "login";
     }
-
-
-
-//
-//    @Operation(description = "страница авторизации")
-//    @RequestMapping(value = "/login")
-//    public String authorizationPage (Model model){
-//        UserAuthDTO dto = new UserAuthDTO();
-//        model.addAttribute("dto", dto);
-//        return "login";
-//    }
 
 
     @Operation(description = "Удаление пользователя")

@@ -24,9 +24,9 @@ public class SwaggerConfig {
                 .components(new Components()
                         .addSecuritySchemes("bearer",
                                 new SecurityScheme()
-                                        .type(SecurityScheme.Type.APIKEY)
-                                        .scheme("X-API-KEY")
-                                        .bearerFormat("JWT")
+                                        .type(SecurityScheme.Type.HTTP)
+//                                        .scheme("basic")
+//                                        .bearerFormat("JWT")
                                         .flows(new OAuthFlows()
                                                 .password(new OAuthFlow()
                                                         .refreshUrl("/login")
