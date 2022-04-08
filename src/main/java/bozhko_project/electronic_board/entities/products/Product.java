@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Data
@@ -24,7 +25,10 @@ public class Product {
 	private String productName;
 
 	@Column(name = "category_id")
-	private String category_id;
+//	@ManyToOne
+//	@JoinColumn
+	@NotNull(message = "категория не выбрана")
+	private Long categoryId;
 
 	@Column(name = "description")
 	private String description;
@@ -33,7 +37,9 @@ public class Product {
 	private double price;
 
 	@Column(name = "brand_id")
-	private String brand_id;
+//	@ManyToOne
+//	@JoinColumn
+	private Long brandId;
 
 	@Column(name = "image")
 	private String imagePath;
