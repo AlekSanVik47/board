@@ -31,10 +31,8 @@ public class ProductController {
     @Operation(description = "Добавление/создание продукта")
     @PostMapping(value =" /user/announcement/product")
     public ResponseEntity<String> createProductController(@Parameter(description = "запрос на создание продукта",required = true)
-                                                          @RequestBody(required = false) CreateProductDto request,
-                                                          @RequestParam (required = false)String brand,
-                                                          @RequestParam (required = false)String category ){
-        productService.createProductService(request, brand, category);
+                                                          @RequestBody(required = false) CreateProductDto request){
+        productService.createProductService(request);
         return ResponseEntity.ok("Продукт добавлен в базу");
     }
 }

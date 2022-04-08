@@ -32,9 +32,6 @@ public interface ProductMapper {
     void updateProductFromCreateProductDto(CreateProductDto createProductDto, @MappingTarget Product product);
 
 
-    Product toBrandId(String brand);
-
-    Product toCategoryId(String category);
 
     Product productToUpdateDTO(ProductUpdateDTO dto, Long id);
 }

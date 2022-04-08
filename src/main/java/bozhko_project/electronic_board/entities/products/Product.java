@@ -21,14 +21,14 @@ public class Product {
 	@Column(name = "id")
 	private Long id;
 
-	@Column(name = "productName")
+	@Column(name = "product_name")
 	private String productName;
 
-	@Column(name = "category_id")
-//	@ManyToOne
-//	@JoinColumn
+
+	@ManyToOne
+	@JoinColumn(name = "category_id")
 	@NotNull(message = "категория не выбрана")
-	private Long categoryId;
+	private Category category;
 
 	@Column(name = "description")
 	private String description;
@@ -36,10 +36,10 @@ public class Product {
 	@Column(name = "price")
 	private double price;
 
-	@Column(name = "brand_id")
-//	@ManyToOne
-//	@JoinColumn
-	private Long brandId;
+
+	@ManyToOne
+	@JoinColumn(name = "brand_id")
+	private Brand brand;
 
 	@Column(name = "image")
 	private String imagePath;

@@ -39,20 +39,11 @@ public class ProductService {
 	public List<Product> getProductByProductNameService(String productName){return productRepository.findByProductName(productName);}
 	public Optional<Product> getProductById(Long id){return productRepository.findById(id);}
 
-	public Long getBrandIdService (String brand){
-		return productMapper.toBrandId(brand).getBrandId();
-	}
-
-	public Long getCategoryIdService (String category){
-		return productMapper.toBrandId(category).getCategoryId();
-	}
-
-
-	public boolean createProductService(CreateProductDto dto, String brand, String category){
+	public boolean createProductService(CreateProductDto dto){
 		Product product = productMapper.productToCreateProductDto(dto);
 		product.setProductName(dto.getProductName());
-		product.setBrandId(getBrandIdService(brand));
-		product.setCategoryId(getCategoryIdService(category));
+		product.setBrand(dto.getBrand());
+		product.setCategory(dto.getCategory());
 		product.setPrice(dto.getPrice());
 		product.setDescription(dto.getDescription());
 
