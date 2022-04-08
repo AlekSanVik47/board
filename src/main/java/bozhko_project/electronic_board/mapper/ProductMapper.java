@@ -35,4 +35,6 @@ public interface ProductMapper {
     Product toBrandId(String brand);
 
     Product toCategoryId(String category);
+
+    Product productToUpdateDTO(ProductUpdateDTO dto, Long id);
 }
