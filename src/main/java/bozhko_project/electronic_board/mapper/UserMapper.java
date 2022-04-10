@@ -13,7 +13,6 @@ import static org.mapstruct.ReportingPolicy.IGNORE;
 @Mapper(componentModel = "spring", unmappedTargetPolicy = IGNORE)
 public interface UserMapper{
 
-    UserDTO userToUserDTO(User entity);
 
 
     UserUpdateDTO userToUpdateDTO(User entity);

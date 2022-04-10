@@ -61,11 +61,12 @@ public class User {
 
 	@Enumerated(value = EnumType.STRING)
 	@Column(name = "status", nullable = false, columnDefinition = "NEW")
-	private Status status;
+	private Status statusId;
 
 	public Role getRole() {
 		return role_id;
 	}
+
 
 
 }

@@ -1,8 +1,12 @@
 package bozhko_project.electronic_board.service;
 
-import bozhko_project.electronic_board.dto.dto_user.*;
-import bozhko_project.electronic_board.entities.user_entities.User;
+import bozhko_project.electronic_board.dto.dto_user.Status;
+import bozhko_project.electronic_board.dto.dto_user.UserAuthDTO;
+import bozhko_project.electronic_board.dto.dto_user.UserCreationDTO;
+import bozhko_project.electronic_board.dto.dto_user.UserUpdateDTO;
 import bozhko_project.electronic_board.entities.authorization.UserDetailsImpl;
+
+import bozhko_project.electronic_board.entities.user_entities.User;
 import bozhko_project.electronic_board.mapper.UserMapper;
 import bozhko_project.electronic_board.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -44,9 +48,9 @@ public class UserServiceImpl implements UserService {
 			return false;
 		}
 		user.setPassword(passwordEncoder.encode(creationDTO.getPassword()));
-		user.setStatus(Status.valueOf("NEW"));
-		user.setRole_id(User.Role.valueOf("USER"));
-		user.setState(User.State.valueOf("CONFIRMED"));
+		user.setStatusId(Status.NEW);
+		user.setRole_id(User.Role.USER);
+		user.setState(User.State.CONFIRMED);
 		userRepository.save(user);
 		return true;
 	}
@@ -67,8 +71,8 @@ public class UserServiceImpl implements UserService {
 		return userRepository.findAll();
 	}
 
-	public UserDTO getUserById(Long id) {
-		return userMapper.userToUserDTO(userRepository.getById(id));
+	public User getUserById(Long id) {
+		return userRepository.getById(id);
 	}
 
 	public void userUpdateLoginDB(Long id, UserUpdateDTO dto) throws AssertionError {
@@ -81,9 +85,9 @@ public class UserServiceImpl implements UserService {
 	public void userAccountUpdate(UserUpdateDTO dto, Integer id) {
 		User user = userMapper.updateUser(dto, id);
 		user.setPassword(passwordEncoder.encode(dto.getPassword()));
-		user.setStatus(Status.valueOf("NEW"));
-		user.setRole_id(User.Role.valueOf("USER"));
-		user.setState(User.State.valueOf("CONFIRMED"));
+		user.setStatusId(Status.NEW);
+		user.setRole_id(User.Role.USER);
+		user.setState(User.State.CONFIRMED);
 		userRepository.saveAndFlush(user);
 	}
 

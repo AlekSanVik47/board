@@ -1,10 +1,10 @@
 package bozhko_project.electronic_board.dto.dto_user;
 
+import bozhko_project.electronic_board.entities.user_entities.Role;
+import bozhko_project.electronic_board.entities.user_entities.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-
-import javax.validation.constraints.NotBlank;
 
 
 @AllArgsConstructor
@@ -13,7 +13,9 @@ import javax.validation.constraints.NotBlank;
 public class UserDTO {
 
     private String login;
-    private String role;
+    private Role role;
 
+    public UserDTO(String login, User.Role[] role) {
+    }
 }
 

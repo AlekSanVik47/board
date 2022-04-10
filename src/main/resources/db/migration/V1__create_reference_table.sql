@@ -1,4 +1,4 @@
-create table user_role (id serial constraint user_role_pk primary key,
+create table user_role (id serial constraint role_pk primary key,
                         role varchar(50) not null, unique (role)
                         );
 
