@@ -1,5 +1,6 @@
 package bozhko_project.electronic_board.entities.authorization;
 
+import bozhko_project.electronic_board.entities.user_entities.State;
 import bozhko_project.electronic_board.entities.user_entities.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -18,7 +19,7 @@ public class UserDetailsImpl implements UserDetails {
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return Collections.singleton(new SimpleGrantedAuthority(user.getRole().toString()));
+		return Collections.singleton(new SimpleGrantedAuthority(user.getRoleId().toString()));
 	}
 
 	@Override
@@ -38,7 +39,7 @@ public class UserDetailsImpl implements UserDetails {
 
 	@Override
 	public boolean isAccountNonLocked() {
-		return !user.getState().equals(User.State.BANNED);
+		return !user.getStateId().equals(State.BANNED);
 	}
 
 	@Override
@@ -48,6 +49,6 @@ public class UserDetailsImpl implements UserDetails {
 
 	@Override
 	public boolean isEnabled() {
-		return user.getState().equals(User.State.CONFIRMED);
+		return user.getStateId().equals(State.CONFIRMED);
 	}
 }

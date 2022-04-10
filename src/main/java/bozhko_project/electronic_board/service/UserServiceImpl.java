@@ -1,6 +1,9 @@
 package bozhko_project.electronic_board.service;
 
 import bozhko_project.electronic_board.dto.dto_user.*;
+import bozhko_project.electronic_board.entities.user_entities.Role;
+import bozhko_project.electronic_board.entities.user_entities.State;
+import bozhko_project.electronic_board.entities.user_entities.Status;
 import bozhko_project.electronic_board.entities.user_entities.User;
 import bozhko_project.electronic_board.entities.authorization.UserDetailsImpl;
 import bozhko_project.electronic_board.mapper.UserMapper;
@@ -30,6 +33,7 @@ public class UserServiceImpl implements UserService {
 	private PasswordEncoder passwordEncoder;
 
 
+
 	@Transactional
 	@Override
 	public User findByUserLogin(String login) {
@@ -44,9 +48,9 @@ public class UserServiceImpl implements UserService {
 			return false;
 		}
 		user.setPassword(passwordEncoder.encode(creationDTO.getPassword()));
-		user.setStatus(Status.valueOf("NEW"));
-		user.setRole_id(User.Role.valueOf("USER"));
-		user.setState(User.State.valueOf("CONFIRMED"));
+		user.setStateId(2L);
+		user.setRoleId(1L);
+		user.setStatusId(1L);
 		userRepository.save(user);
 		return true;
 	}
@@ -81,9 +85,9 @@ public class UserServiceImpl implements UserService {
 	public void userAccountUpdate(UserUpdateDTO dto, Integer id) {
 		User user = userMapper.updateUser(dto, id);
 		user.setPassword(passwordEncoder.encode(dto.getPassword()));
-		user.setStatus(Status.valueOf("NEW"));
-		user.setRole_id(User.Role.valueOf("USER"));
-		user.setState(User.State.valueOf("CONFIRMED"));
+		user.setStateId(2L);
+		user.setRoleId(1L);
+		user.setStatusId(1L);
 		userRepository.saveAndFlush(user);
 	}
 

@@ -8,29 +8,26 @@ import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlType;
 
 @Entity
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "user_role")
-public class Role implements GrantedAuthority {
+@Table(name = "role_tbl")
+public enum Role {
 
-//	public enum UserRole {
-//		ADMIN,USER;
-//	}
+	ADMIN,
+	USER;
+
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 
+	@Column(name = "role_fld",columnDefinition = "USER")
+	private String role;
 
-	@Column(columnDefinition = "USER")
-	private Role role_id;
 
-	@Override
-	public String getAuthority() {
-		return null;
-	}
+
 }

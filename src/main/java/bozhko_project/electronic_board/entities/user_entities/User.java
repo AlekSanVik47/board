@@ -1,44 +1,24 @@
 package bozhko_project.electronic_board.entities.user_entities;
 
-import bozhko_project.electronic_board.dto.dto_user.Status;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Collection;
+import java.util.EnumSet;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "users")
+@Table(name = "users_tbl")
 public class User {
 
-	public enum Role {
-		USER, ADMIN
-	}
-
-	;
-//	@ManyToMany(fetch = FetchType.EAGER)
-//	private Set<Role> roles;
-
-	public enum State {
-		NOT_CONFIRMED, CONFIRMED, DELETE, BANNED
-	}
-
-	;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
-	@Enumerated(value = EnumType.STRING)
-	@Column(columnDefinition = "USER", name = "role_id")
-	private Role role_id;
-
-	@Enumerated(value = EnumType.STRING)
-	@Column(columnDefinition = "CONFIRMED")
-	private State state;
 
 
 	@Column(name = "login", unique = true)
@@ -59,14 +39,19 @@ public class User {
 	@Column(unique = true)
 	private String phone;
 
-	@Enumerated(value = EnumType.STRING)
-	@Column(name = "status", nullable = false, columnDefinition = "NEW")
-	private Status status;
+	@Column(name = "role_id")
+	private Long roleId;
 
-	public Role getRole() {
-		return role_id;
+
+	@Column(name = "state_id")
+	private Long stateId;
+
+	@Column(name = "status_id")
+	private Long statusId;
+
+
+
+	public void getState() {
 	}
-
-
 }
 
