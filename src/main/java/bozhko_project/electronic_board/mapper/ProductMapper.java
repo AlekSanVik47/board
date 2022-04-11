@@ -15,6 +15,8 @@ import static org.mapstruct.ReportingPolicy.IGNORE;
 public interface ProductMapper {
     Product productToProductDTO(ProductDto entity);
 
+
+
     Product productToUpdateDTO(Product entity);
 
     Product addProductDTO(Product entity);

@@ -1,7 +1,6 @@
 package bozhko_project.electronic_board.dto.dto_products;
 
-import bozhko_project.electronic_board.entities.products.Brand;
-import bozhko_project.electronic_board.entities.products.Category;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 
 import java.io.Serializable;
@@ -13,9 +12,14 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateProductDto implements Serializable {
+    @Schema(description = "Наименование товара")
     private String productName;
-    private Brand brand;
-    private Category category;
+    @Schema(description = "ID брэнда товара")
+    private Long brandId;
+    @Schema(description = "ID категории товара")
+    private Long categoryId;
+    @Schema(description = "цена")
     private double price;
+    @Schema(description = "описание")
     private String description;
 }

@@ -4,9 +4,9 @@ import bozhko_project.electronic_board.dto.dto_products.CreateProductDto;
 import bozhko_project.electronic_board.dto.dto_products.ProductUpdateDTO;
 import bozhko_project.electronic_board.entities.products.Product;
 import bozhko_project.electronic_board.mapper.ProductMapper;
-import bozhko_project.electronic_board.repository.BrandRepository;
-import bozhko_project.electronic_board.repository.CategoryRepository;
-import bozhko_project.electronic_board.repository.ProductRepository;
+import bozhko_project.electronic_board.repository.product_rep.BrandRepository;
+import bozhko_project.electronic_board.repository.product_rep.CategoryRepository;
+import bozhko_project.electronic_board.repository.product_rep.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -42,8 +42,8 @@ public class ProductService {
 	public boolean createProductService(CreateProductDto dto){
 		Product product = productMapper.productToCreateProductDto(dto);
 		product.setProductName(dto.getProductName());
-		product.setBrand(dto.getBrand());
-		product.setCategory(dto.getCategory());
+		product.setBrandId(dto.getBrandId());
+		product.setCategoryId(dto.getCategoryId());
 		product.setPrice(dto.getPrice());
 		product.setDescription(dto.getDescription());
 
@@ -56,7 +56,7 @@ public class ProductService {
 		product.setProductName(dto.getProductName());
 		product.setDescription(dto.getDescription());
 		product.setPrice(dto.getPrice());
-		product.setImagePath(dto.getImagePath());
+		product.setImageId(dto.getImageId());
 		productRepository.save(product);
 	}
 

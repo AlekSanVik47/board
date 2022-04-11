@@ -12,14 +12,14 @@ import javax.persistence.*;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "brands")
+@Table(name = "brand_tbl")
 public class Brand {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Long id;
 
-	@Column(name = "brand", unique = true)
+	@Column(name = "brand_fld", unique = true)
 	private String brand;
 
 
