@@ -5,7 +5,7 @@ import bozhko_project.electronic_board.dto.dto_user.UserCreationDTO;
 import bozhko_project.electronic_board.dto.dto_user.UserUpdateDTO;
 import bozhko_project.electronic_board.entities.user_entities.User;
 import bozhko_project.electronic_board.mapper.UserMapper;
-import bozhko_project.electronic_board.repository.UserRepository;
+import bozhko_project.electronic_board.repository.user_rep.UserRepository;
 import bozhko_project.electronic_board.service.UserServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

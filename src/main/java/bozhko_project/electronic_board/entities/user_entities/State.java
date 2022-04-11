@@ -1,16 +1,19 @@
 package bozhko_project.electronic_board.entities.user_entities;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "state_tbl")
-public enum State {
-	NOT_CONFIRMED, CONFIRMED, DELETE, BANNED;
+public class State {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "state_id", nullable = false)
@@ -23,7 +26,4 @@ public enum State {
 	@Column(name = "state_fld", columnDefinition = "CONFIRMED")
 	private String state;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
 }

@@ -6,17 +6,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Getter
 @Entity
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "status_tbl")
-public enum Status {
-    NEW,
-    IN_PROGRESS,
-    COMPLETED;
+public class Status {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,11 +25,9 @@ public enum Status {
     @Column(name = "status_fld", columnDefinition = "NEW")
     private String status;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Long getId() {
         return id;
     }
-}
+
+   }

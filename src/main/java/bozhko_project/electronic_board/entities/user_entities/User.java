@@ -43,12 +43,13 @@ public class User {
 	inverseJoinColumns = {@JoinColumn(name="role_id", referencedColumnName="role_id")})
 	private List<Role> roles;
 
+	@ManyToOne(fetch = FetchType.LAZY, targetEntity = State.class)
+	@JoinColumn(name="state_id")
+	private State states;
 
-	@Column(name = "state_id")
-	private Long stateId;
-
-	@Column(name = "status_id")
-	private Long statusId;
+	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Status.class)
+	@JoinColumn(name="status_id")
+	private Status statuses;
 
 
 

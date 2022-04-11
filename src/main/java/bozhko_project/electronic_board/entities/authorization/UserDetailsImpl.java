@@ -39,7 +39,7 @@ public class UserDetailsImpl implements UserDetails {
 
 	@Override
 	public boolean isAccountNonLocked() {
-		return !user.getStateId().equals(State.BANNED);
+		return !user.getStates().equals("BANNED");
 	}
 
 	@Override
@@ -49,6 +49,6 @@ public class UserDetailsImpl implements UserDetails {
 
 	@Override
 	public boolean isEnabled() {
-		return user.getStateId().equals(State.CONFIRMED);
+		return user.getStates().equals("CONFIRMED");
 	}
 }

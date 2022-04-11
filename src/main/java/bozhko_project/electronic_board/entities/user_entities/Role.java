@@ -21,6 +21,6 @@ public class Role {
 
 
 	@Column(name = "role_fld",columnDefinition = "USER")
-	private String role = "USER";
+	private String role;
 
 }

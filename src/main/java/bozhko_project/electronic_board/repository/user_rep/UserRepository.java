@@ -1,4 +1,4 @@
-package bozhko_project.electronic_board.repository;
+package bozhko_project.electronic_board.repository.user_rep;
 
 import bozhko_project.electronic_board.entities.user_entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;

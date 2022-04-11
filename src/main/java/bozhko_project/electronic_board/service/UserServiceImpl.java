@@ -5,10 +5,14 @@ import bozhko_project.electronic_board.dto.dto_user.UserCreationDTO;
 import bozhko_project.electronic_board.dto.dto_user.UserDTO;
 import bozhko_project.electronic_board.dto.dto_user.UserUpdateDTO;
 import bozhko_project.electronic_board.entities.user_entities.Role;
+import bozhko_project.electronic_board.entities.user_entities.State;
+import bozhko_project.electronic_board.entities.user_entities.Status;
 import bozhko_project.electronic_board.entities.user_entities.User;
 import bozhko_project.electronic_board.mapper.UserMapper;
-import bozhko_project.electronic_board.repository.RoleRepository;
-import bozhko_project.electronic_board.repository.UserRepository;
+import bozhko_project.electronic_board.repository.user_rep.RoleRepository;
+import bozhko_project.electronic_board.repository.user_rep.StateRepository;
+import bozhko_project.electronic_board.repository.user_rep.StatusRepository;
+import bozhko_project.electronic_board.repository.user_rep.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -35,6 +39,10 @@ public class UserServiceImpl implements UserService {
 	private PasswordEncoder passwordEncoder;
 	@Autowired
 	private final RoleRepository roleRepository;
+	@Autowired
+	private final StateRepository stateRepository;
+	@Autowired
+	private final StatusRepository statusRepository;
 
 
 
@@ -51,13 +59,12 @@ public class UserServiceImpl implements UserService {
 		if (findByUserLogin(creationDTO.getLogin()) != null) {
 			return false;
 		}
-		List<Role> roles = new ArrayList();//user.setRole(Role.USER);
+		List<Role> roles = new ArrayList();
 		roles.add(roleRepository.findByRole("USER"));
-		roles.add(roleRepository.findByRole("ADMIN"));
 		user.setPassword(passwordEncoder.encode(creationDTO.getPassword()));
-		user.setStateId(2L);
+		user.setStates(stateRepository.findByState("CONFIRMED"));
 		user.setRoles(roles);
-		user.setStatusId(1L);
+		user.setStatuses(statusRepository.findByStatus("NEW"));
 		userRepository.save(user);
 		return true;
 	}
@@ -90,14 +97,14 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public void userAccountUpdate(UserUpdateDTO dto, Integer id) {
-		List<Role> roles = new ArrayList();//user.setRole(Role.USER);
+		List<Role> roles = new ArrayList();
 		roles.add(roleRepository.findByRole("USER"));
 		roles.add(roleRepository.findByRole("ADMIN"));
 		User user = userMapper.updateUser(dto, id);
 		user.setPassword(passwordEncoder.encode(dto.getPassword()));
-		user.setStateId(2L);
+		user.setStates(stateRepository.findByState("CONFIRMED"));
 		user.setRoles(roles);
-		user.setStatusId(1L);
+		user.setStatuses(statusRepository.findByStatus("NEW"));
 		userRepository.saveAndFlush(user);
 	}
 
