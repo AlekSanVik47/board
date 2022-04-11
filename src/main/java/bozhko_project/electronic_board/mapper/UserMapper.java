@@ -41,6 +41,8 @@ public interface UserMapper{
 
 
     User getUserById(Long id);
+
+    UserDTO userToUserDTO(User byId);
 }
 
 

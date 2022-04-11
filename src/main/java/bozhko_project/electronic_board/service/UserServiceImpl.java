@@ -1,11 +1,10 @@
 package bozhko_project.electronic_board.service;
 
-import bozhko_project.electronic_board.dto.dto_user.*;
-import bozhko_project.electronic_board.entities.user_entities.Role;
-import bozhko_project.electronic_board.entities.user_entities.State;
-import bozhko_project.electronic_board.entities.user_entities.Status;
+import bozhko_project.electronic_board.dto.dto_user.UserAuthDTO;
+import bozhko_project.electronic_board.dto.dto_user.UserCreationDTO;
+import bozhko_project.electronic_board.dto.dto_user.UserDTO;
+import bozhko_project.electronic_board.dto.dto_user.UserUpdateDTO;
 import bozhko_project.electronic_board.entities.user_entities.User;
-import bozhko_project.electronic_board.entities.authorization.UserDetailsImpl;
 import bozhko_project.electronic_board.mapper.UserMapper;
 import bozhko_project.electronic_board.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -60,7 +59,7 @@ public class UserServiceImpl implements UserService {
 	public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
 		Optional<User> userOptional = Optional.ofNullable(userRepository.findUserByLogin(login));
 		User user = userOptional.orElseThrow(() -> new UsernameNotFoundException("Пользователь не найден"));
-		return new UserDetailsImpl(user);
+		return (UserDetails) user;
 	}
 
 	public User getUserByPhone(String phone) {
