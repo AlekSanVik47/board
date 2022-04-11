@@ -4,8 +4,10 @@ import bozhko_project.electronic_board.dto.dto_user.UserAuthDTO;
 import bozhko_project.electronic_board.dto.dto_user.UserCreationDTO;
 import bozhko_project.electronic_board.dto.dto_user.UserDTO;
 import bozhko_project.electronic_board.dto.dto_user.UserUpdateDTO;
+import bozhko_project.electronic_board.entities.user_entities.Role;
 import bozhko_project.electronic_board.entities.user_entities.User;
 import bozhko_project.electronic_board.mapper.UserMapper;
+import bozhko_project.electronic_board.repository.RoleRepository;
 import bozhko_project.electronic_board.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,6 +33,8 @@ public class UserServiceImpl implements UserService {
 	private final UserRepository userRepository;
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+	@Autowired
+	private final RoleRepository roleRepository;
 
 
 
@@ -46,9 +51,12 @@ public class UserServiceImpl implements UserService {
 		if (findByUserLogin(creationDTO.getLogin()) != null) {
 			return false;
 		}
+		List<Role> roles = new ArrayList();//user.setRole(Role.USER);
+		roles.add(roleRepository.findByRole("USER"));
+		roles.add(roleRepository.findByRole("ADMIN"));
 		user.setPassword(passwordEncoder.encode(creationDTO.getPassword()));
 		user.setStateId(2L);
-		user.setRoleId(1L);
+		user.setRoles(roles);
 		user.setStatusId(1L);
 		userRepository.save(user);
 		return true;
@@ -82,10 +90,13 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public void userAccountUpdate(UserUpdateDTO dto, Integer id) {
+		List<Role> roles = new ArrayList();//user.setRole(Role.USER);
+		roles.add(roleRepository.findByRole("USER"));
+		roles.add(roleRepository.findByRole("ADMIN"));
 		User user = userMapper.updateUser(dto, id);
 		user.setPassword(passwordEncoder.encode(dto.getPassword()));
 		user.setStateId(2L);
-		user.setRoleId(1L);
+		user.setRoles(roles);
 		user.setStatusId(1L);
 		userRepository.saveAndFlush(user);
 	}

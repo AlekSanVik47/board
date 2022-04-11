@@ -30,7 +30,6 @@ CREATE TABLE IF NOT EXISTS public.users_tbl
     email character varying(255) COLLATE pg_catalog."default" NOT NULL,
     password character varying(255) COLLATE pg_catalog."default" NOT NULL,
     status_id smallint NOT NULL,
-    role_id smallint NOT NULL,
     state_id smallint NOT NULL,
     recording_time DATE NOT NULL DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT users_tbl_pkey PRIMARY KEY (id),
@@ -38,10 +37,6 @@ CREATE TABLE IF NOT EXISTS public.users_tbl
     CONSTRAINT users_tbl_login_key UNIQUE (login),
     CONSTRAINT users_tbl_password_key UNIQUE (password),
     CONSTRAINT users_tbl_phone_key UNIQUE (phone),
-    CONSTRAINT role_fk FOREIGN KEY (role_id)
-        REFERENCES public.role_tbl (role_id) MATCH SIMPLE
-        ON UPDATE NO ACTION
-        ON DELETE NO ACTION,
     CONSTRAINT state_fk FOREIGN KEY (state_id)
         REFERENCES public.state_tbl (state_id) MATCH SIMPLE
         ON UPDATE NO ACTION
@@ -56,5 +51,5 @@ INSERT INTO state_tbl (state_fld) VALUES ('NOT_CONFIRMED'), ('CONFIRMED'), ('DEL
 INSERT INTO status_tbl (status_fld) VALUES ('NEW'), ('IN_PROGRESS'), ('DELETE'), ('COMPLETED');
 
 
-INSERT INTO users_tbl (login, surname, name, phone, email, password, role_id, state_id, status_id)
-VALUES ('login_1', 'surname_1', 'name_1', '705-705', 'email@mail.ru', 'password_1', 2, 2, 1);
+INSERT INTO users_tbl (login, surname, name, phone, email, password, state_id, status_id)
+VALUES ('login_1', 'surname_1', 'name_1', '705-705', 'email@mail.ru', 'password_1', 2, 1);

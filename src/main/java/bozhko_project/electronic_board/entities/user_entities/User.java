@@ -5,8 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.EnumSet;
+import java.util.List;
 
 @Entity
 @Data
@@ -39,8 +38,10 @@ public class User {
 	@Column(unique = true)
 	private String phone;
 
-	@Column(name = "role_id")
-	private Long roleId;
+	@ManyToMany(cascade={CascadeType.MERGE})
+	@JoinTable(name = "user_role_tbl", joinColumns = {@JoinColumn(name="user_id", referencedColumnName="id")},
+	inverseJoinColumns = {@JoinColumn(name="role_id", referencedColumnName="role_id")})
+	private List<Role> roles;
 
 
 	@Column(name = "state_id")
