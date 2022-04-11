@@ -2,7 +2,7 @@ package bozhko_project.electronic_board.controller;
 
 import bozhko_project.electronic_board.dto.dto_products.CreateProductDto;
 import bozhko_project.electronic_board.mapper.ProductMapper;
-import bozhko_project.electronic_board.repository.ProductRepository;
+import bozhko_project.electronic_board.repository.product_rep.ProductRepository;
 import bozhko_project.electronic_board.service.ProductService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -35,4 +35,5 @@ public class ProductController {
         productService.createProductService(request);
         return ResponseEntity.ok("Продукт добавлен в базу");
     }
+
 }

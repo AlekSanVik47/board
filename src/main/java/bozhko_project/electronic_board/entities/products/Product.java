@@ -13,7 +13,7 @@ import javax.validation.constraints.NotNull;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "products")
+@Table(name = "product_tbl")
 public class Product {
 
 	@Id
@@ -25,10 +25,10 @@ public class Product {
 	private String productName;
 
 
-	@ManyToOne
-	@JoinColumn(name = "category_id")
+
+	@Column(name = "category_id")
 	@NotNull(message = "категория не выбрана")
-	private Category category;
+	private Long categoryId;
 
 	@Column(name = "description")
 	private String description;
@@ -37,11 +37,12 @@ public class Product {
 	private double price;
 
 
-	@ManyToOne
-	@JoinColumn(name = "brand_id")
-	private Brand brand;
 
-	@Column(name = "image")
-	private String imagePath;
+	@Column(name = "brand_id")
+	private Long brandId;
+
+
+	@Column(name = "image_id")
+	private Long imageId;
 
 }

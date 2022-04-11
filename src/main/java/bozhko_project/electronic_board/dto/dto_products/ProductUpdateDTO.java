@@ -16,5 +16,5 @@ public class ProductUpdateDTO {
 	private final double price;
 
 	@Schema(description = "Изображение")
-	private final String imagePath;
+	private final Long imageId;
 }

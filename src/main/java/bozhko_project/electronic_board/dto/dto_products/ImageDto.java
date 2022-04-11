@@ -6,8 +6,8 @@ import lombok.Data;
 import java.io.Serializable;
 
 @Data
-public class BrandDto implements Serializable {
+public class ImageDto implements Serializable {
 
-	@Schema(description = "наименование брэнда товара")
-	private final String brand;
+    @Schema(description = "изображение")
+    private final String image;
 }

@@ -33,15 +33,15 @@ CREATE TABLE IF NOT EXISTS public.product_tbl
 	description  character varying(500),
     recording_time DATE NOT NULL DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT product_tbl_pkey PRIMARY KEY (id),
-   	CONSTRAINT role_fk FOREIGN KEY (category_id)
+   	CONSTRAINT category_fk FOREIGN KEY (category_id)
         REFERENCES public.category_tbl (category_id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION,
-    CONSTRAINT state_fk FOREIGN KEY (image_id)
+    CONSTRAINT image_fk FOREIGN KEY (image_id)
         REFERENCES public.image_tbl (image_id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION,
-    CONSTRAINT status_fk FOREIGN KEY (brand_id)
+    CONSTRAINT brand_fk FOREIGN KEY (brand_id)
         REFERENCES public.brand_tbl (brand_id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION

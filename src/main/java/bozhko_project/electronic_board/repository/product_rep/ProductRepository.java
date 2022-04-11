@@ -1,4 +1,4 @@
-package bozhko_project.electronic_board.repository;
+package bozhko_project.electronic_board.repository.product_rep;
 
 import bozhko_project.electronic_board.entities.products.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -16,9 +16,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 	List<Product> findByBrandId(Long brandId);
 	List<Product> findByProductName(String productName);
 
-
-
-	boolean existsByImagePath(String imagePath);
 
 	@Override
 	Optional<Product> findById(Long aLong);

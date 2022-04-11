@@ -1,4 +1,4 @@
-package bozhko_project.electronic_board.repository;
+package bozhko_project.electronic_board.repository.product_rep;
 
 import bozhko_project.electronic_board.entities.products.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
