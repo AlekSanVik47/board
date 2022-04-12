@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS public.users_tbl
     password character varying(255) COLLATE pg_catalog."default" NOT NULL,
     status_id smallint NOT NULL,
     state_id smallint NOT NULL,
-    recording_time DATE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    recording_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT users_tbl_pkey PRIMARY KEY (id),
     CONSTRAINT users_tbl_email_key UNIQUE (email),
     CONSTRAINT users_tbl_login_key UNIQUE (login),

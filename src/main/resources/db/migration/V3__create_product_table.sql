@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS public.product_tbl
 	price DECIMAL(8,2),
 	image_id smallint,
 	description  character varying(500),
-    recording_time DATE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    recording_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT product_tbl_pkey PRIMARY KEY (id),
    	CONSTRAINT category_fk FOREIGN KEY (category_id)
         REFERENCES public.category_tbl (category_id) MATCH SIMPLE

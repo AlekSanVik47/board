@@ -5,8 +5,6 @@ import bozhko_project.electronic_board.dto.dto_user.UserCreationDTO;
 import bozhko_project.electronic_board.dto.dto_user.UserDTO;
 import bozhko_project.electronic_board.dto.dto_user.UserUpdateDTO;
 import bozhko_project.electronic_board.entities.user_entities.Role;
-import bozhko_project.electronic_board.entities.user_entities.State;
-import bozhko_project.electronic_board.entities.user_entities.Status;
 import bozhko_project.electronic_board.entities.user_entities.User;
 import bozhko_project.electronic_board.mapper.UserMapper;
 import bozhko_project.electronic_board.repository.user_rep.RoleRepository;
