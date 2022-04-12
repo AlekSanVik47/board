@@ -1,0 +1,1 @@
+INSERT INTO image_tbl (image_fld) VALUES ('image_1');

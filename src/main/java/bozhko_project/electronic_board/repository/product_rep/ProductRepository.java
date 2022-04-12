@@ -16,7 +16,11 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 	List<Product> findByBrandId(Long brandId);
 	List<Product> findByProductName(String productName);
 
+	Product findBrandIdById(Long id);
 
 	@Override
 	Optional<Product> findById(Long aLong);
+
+	Product findCategoryIdById(Long id);
+	Product findImageIdById(long id);
 }

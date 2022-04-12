@@ -6,6 +6,12 @@ import lombok.Data;
 @Data
 public class ProductUpdateDTO {
 
+//	@Schema(description = "ID брэнда товара")
+//	private Long brandId;
+//
+//	@Schema(description = "ID категории товара")
+//	private Long categoryId;
+
 	@Schema(description = "Наименование товара")
 	private final String productName;
 

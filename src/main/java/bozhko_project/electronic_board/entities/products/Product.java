@@ -36,11 +36,8 @@ public class Product {
 	@Column(name = "price")
 	private double price;
 
-
-
 	@Column(name = "brand_id")
 	private Long brandId;
-
 
 	@Column(name = "image_id")
 	private Long imageId;

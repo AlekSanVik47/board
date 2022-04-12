@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface BrandRepository extends JpaRepository<Brand, Long> {
     @Query("select b from Brand b where b.id = ?1")
-    Brand findBrandById(Long id);
+    Long findBrandById(Long id);
     Brand findIdByBrand(String brand);
 
     @Override
