@@ -53,11 +53,11 @@ public class ProductService {
     }
 
     public List<Product> getProductByProductNameService(String productName) {
-        return productRepository.findByProductName(productName);
+        return Optional.ofNullable(productRepository.findByProductName(productName)).orElse(null);
     }
 
     public Optional<Product> getProductById(Long id) {
-        return productRepository.findById(id);
+        return Optional.ofNullable(productRepository.findById(id).orElse(null));
     }
 
     public void createProductService(CreateProductDto dto) {
@@ -104,4 +104,6 @@ public class ProductService {
     public void deleteProductService(Long id) {
         productRepository.deleteById(id);
     }
+
+
 }

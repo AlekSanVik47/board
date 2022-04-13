@@ -1,6 +1,6 @@
 package bozhko_project.electronic_board.entities.user_entities;
 
-import bozhko_project.electronic_board.entities.Announcement;
+import bozhko_project.electronic_board.entities.ads.Announcement;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

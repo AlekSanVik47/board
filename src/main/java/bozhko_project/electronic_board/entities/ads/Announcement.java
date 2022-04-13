@@ -1,4 +1,4 @@
-package bozhko_project.electronic_board.entities;
+package bozhko_project.electronic_board.entities.ads;
 
 import bozhko_project.electronic_board.entities.products.Product;
 import bozhko_project.electronic_board.entities.user_entities.User;

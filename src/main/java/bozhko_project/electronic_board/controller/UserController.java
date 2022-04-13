@@ -46,7 +46,7 @@ public class UserController {
     @PostMapping(
             value = "/create-user"
     )
-    public ResponseEntity<String> createUser(@Parameter(description = "Запрос на создание пользователя", required = true)
+    public ResponseEntity<String> createUserController(@Parameter(description = "Запрос на создание пользователя", required = true)
                                              @RequestBody(required = false) UserCreationDTO request,
                                              @RequestParam(required = false) String login) {
         service.saveUser(request);
@@ -66,7 +66,7 @@ public class UserController {
 
     @Operation(description = "Авторизация пользователя")
     @RequestMapping(value = "/login", method = RequestMethod.PUT)
-    public ResponseEntity<String> userAuthorization(@Parameter(description = "Авторизация", required = true)
+    public ResponseEntity<String> userAuthorizationController(@Parameter(description = "Авторизация", required = true)
                                                         @RequestBody(required = false) UserAuthDTO request) {
         usersService.authUser(request);
         return ResponseEntity.ok("login");
@@ -81,7 +81,7 @@ public class UserController {
 
     @Operation(description = "Удаление пользователя")
     @DeleteMapping(value = "/user/users-delete/{userId}")
-    public ResponseEntity<Object> deleteUser(@Parameter(description = "Идентификатор для удаления", required = true)
+    public ResponseEntity<Object> deleteUserController(@Parameter(description = "Идентификатор для удаления", required = true)
                                              @PathVariable(value = "userId") Long userId) {
         usersService.deleteUserById(userId);
         return ResponseEntity.noContent().build();
@@ -92,7 +92,7 @@ public class UserController {
             value = "/user/all-users/{users}",
             produces = {"application/json"}
     )
-    public ResponseEntity<List<User>> getUsers(@Parameter(description = "Список пользователей")
+    public ResponseEntity<List<User>> getUsersController(@Parameter(description = "Список пользователей")
                                                @RequestParam String users) {
         List<User> allUsers = usersService.getRegisteredUsers();
         return ResponseEntity.ok(allUsers);
@@ -102,7 +102,7 @@ public class UserController {
     @GetMapping(value = "/user/by-phone/{phone}",
             produces = {"application/json"},
             consumes = {"application/json"})
-    public ResponseEntity<User> getUserByPhoneService(@Parameter(description = "Поиск пользователя по номеру телефона")
+    public ResponseEntity<User> getUserByPhoneController(@Parameter(description = "Поиск пользователя по номеру телефона")
                                                       @PathVariable(value = "phone") String phone,
                                                       @RequestBody(required = false) UserUpdateDTO request) {
         return ResponseEntity.ok(usersService.getUserByPhone(phone));
