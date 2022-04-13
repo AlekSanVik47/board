@@ -31,20 +31,54 @@ public class ProductController {
 
 
     @Operation(description = "Добавление/создание продукта")
-    @PostMapping(value =" /user/announcement/product")
+    @PostMapping(value =" /user/announcement/create-product")
     public ResponseEntity<String> createProductController(@Parameter(description = "запрос на создание продукта",required = true)
                                                           @RequestBody(required = false) CreateProductDto request){
         productService.createProductService(request);
         return ResponseEntity.ok("Продукт добавлен в базу");
     }
     @Operation(description = "Обновление продукта")
-    @PostMapping(value =" /user/announcement/product/update-product/{productId}")
+    @PostMapping(value ="user/announcement/product/update-product/{productId}")
     public ResponseEntity<String> productUpdateController(@Parameter(description = "запрос на обновление продукта",required = true)
                                                               @RequestBody(required = false) ProductUpdateDTO request,
     @PathVariable("productId") Long productId){
         productService.productUpdateService(request,productId );
         return ResponseEntity.ok("Данные успешно обновлены");
     }
+
+    @Operation(description = "Обновление названия")
+    @PostMapping(value ="user/announcement/product/update-product-name/{productId}")
+    public ResponseEntity<String> productNameUpdateController(@Parameter(description = "запрос на обновление продукта",required = true)
+                                                          @RequestBody(required = false) ProductUpdateDTO request,
+                                                          @PathVariable("productId") Long productId){
+        productService.productNameUpdateService(request,productId );
+        return ResponseEntity.ok("Название успешно обновлено");
+    }
+    @Operation(description = "Обновление изображения")
+    @PostMapping(value ="user/announcement/product/update-product-image/{productId}")
+    public ResponseEntity<String> productImageUpdateController(@Parameter(description = "запрос на обновление продукта",required = true)
+                                                              @RequestBody(required = false) ProductUpdateDTO request,
+                                                              @PathVariable("productId") Long productId){
+        productService.productImageUpdateService(request,productId );
+        return ResponseEntity.ok("Изображение успешно обновлено");
+    }
+    @Operation(description = "Обновление описания")
+    @PostMapping(value ="user/announcement/product/update-product-description/{productId}")
+    public ResponseEntity<String> productDescriptionUpdateController(@Parameter(description = "запрос на обновление продукта",required = true)
+                                                               @RequestBody(required = false) ProductUpdateDTO request,
+                                                               @PathVariable("productId") Long productId){
+        productService.productDescriptionUpdateService(request,productId );
+        return ResponseEntity.ok("Описание успешно обновлено");
+    }
+    @Operation(description = "Изменение цены")
+    @PostMapping(value ="user/announcement/product/update-product-price/{productId}")
+    public ResponseEntity<String> productPriceUpdateController(@Parameter(description = "запрос на обновление продукта",required = true)
+                                                                     @RequestBody(required = false) ProductUpdateDTO request,
+                                                                     @PathVariable("productId") Long productId){
+        productService.productPriceUpdateService(request,productId );
+        return ResponseEntity.ok("Цена успешно изменена");
+    }
+
     @Operation(description = "Удаление продукта")
     @DeleteMapping(value = "/announcement/product/product-delete/{productId}")
     public ResponseEntity<Object> deleteUser(@Parameter(description = "Идентификатор для удаления", required = true)

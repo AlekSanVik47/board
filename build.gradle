@@ -23,14 +23,14 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter:2.6.5'
-    implementation 'org.springframework.boot:spring-boot-starter-web:2.6.5'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.6.5'
+    implementation 'org.springframework.boot:spring-boot-starter:2.6.6'
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.6.6'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.6.6'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
-    implementation 'org.flywaydb:flyway-core:8.5.4'
+    implementation 'org.flywaydb:flyway-core:8.5.7'
 
-    implementation 'org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.6.3'
-    implementation 'org.springframework.boot:spring-boot-starter-security:2.6.5'
+    implementation 'org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.6.6'
+    implementation 'org.springframework.boot:spring-boot-starter-security:2.6.6'
     implementation 'org.springframework.security.oauth:spring-security-oauth2:2.5.1.RELEASE'
     implementation 'org.springframework.security:spring-security-jwt:1.1.1.RELEASE'
 
@@ -39,16 +39,16 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok:1.18.22'
     implementation "org.mapstruct:mapstruct:1.4.2.Final"
     annotationProcessor "org.mapstruct:mapstruct-processor:1.4.2.Final"
-    implementation 'org.springdoc:springdoc-openapi-ui:1.6.6'
+    implementation 'org.springdoc:springdoc-openapi-ui:1.6.7'
 
     runtimeOnly 'org.postgresql:postgresql:42.3.3'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.testcontainers:postgresql:1.16.3'
     testImplementation 'org.testcontainers:junit-jupiter:1.16.3'
 
-    testImplementation 'io.rest-assured:rest-assured:4.5.1'
-    testImplementation 'io.rest-assured:json-schema-validator:4.5.1'
-    testImplementation 'io.rest-assured:json-path:4.5.1'
+    testImplementation 'io.rest-assured:rest-assured:5.0.1'
+    testImplementation 'io.rest-assured:json-schema-validator:5.0.1'
+    testImplementation 'io.rest-assured:json-path:5.0.1'
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: '2.6.5'
     implementation group: 'org.thymeleaf', name: 'thymeleaf', version: '3.1.0.M1'
     implementation 'org.apache.tomcat.embed:tomcat-embed-jasper:10.1.0-M12'

@@ -60,29 +60,45 @@ public class ProductService {
         return productRepository.findById(id);
     }
 
-    public boolean createProductService(CreateProductDto dto) {
+    public void createProductService(CreateProductDto dto) {
         Product product = productMapper.productToCreateProductDto(dto);
         product.setProductName(dto.getProductName());
         product.setBrandId(dto.getBrandId());
         product.setCategoryId(dto.getCategoryId());
         product.setPrice(dto.getPrice());
         product.setDescription(dto.getDescription());
-
         productRepository.save(product);
-        return true;
     }
 
-    public boolean productUpdateService(ProductUpdateDTO dto, Long id) {
+    public void productUpdateService(ProductUpdateDTO dto, Long id) {
         Product product = productMapper.productToUpdateDTO(dto, id);
         product.setBrandId(productRepository.findBrandIdById(id).getBrandId());
         product.setCategoryId(productRepository.findCategoryIdById(id).getCategoryId());
-        product.setImageId(dto.getImageId() == null || dto.getImageId() == 0 ? productRepository.findImageIdById(id).getImageId() : dto.getImageId());
+        product.setImageId(dto.getImageId());
         product.setProductName(dto.getProductName());
         product.setDescription(dto.getDescription());
         product.setPrice(dto.getPrice());
-
         productRepository.save(product);
-        return true;
+    }
+    public void productNameUpdateService(ProductUpdateDTO dto, Long id) {
+        Product product = productRepository.getById(id);
+        product.setProductName(dto.getProductName());
+        productRepository.saveAndFlush(product);
+    }
+    public void productDescriptionUpdateService(ProductUpdateDTO dto, Long id) {
+        Product product = productMapper.productToUpdateDTO(dto, id);
+        product.setDescription(dto.getDescription());
+        productRepository.saveAndFlush(product);
+    }
+    public void productPriceUpdateService(ProductUpdateDTO dto, Long id) {
+        Product product = productMapper.productToUpdateDTO(dto, id);
+        product.setPrice(dto.getPrice());
+        productRepository.saveAndFlush(product);
+    }
+    public void productImageUpdateService(ProductUpdateDTO dto, Long id) {
+        Product product = productMapper.productToUpdateDTO(dto, id);
+        product.setImageId(dto.getImageId());
+        productRepository.saveAndFlush(product);
     }
 
     public void deleteProductService(Long id) {
