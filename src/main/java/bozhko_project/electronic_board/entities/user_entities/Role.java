@@ -17,11 +17,12 @@ public class Role {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "role_id")
-//	@ManyToMany(fetch = FetchType.LAZY, targetEntity = User.class)
 	private Long id;
-
 
 	@Column(name = "role_fld",columnDefinition = "USER")
 	private String role;
 
+	public Long getId() {
+		return id;
+	}
 }

@@ -1,5 +1,6 @@
 package bozhko_project.electronic_board.entities.user_entities;
 
+import bozhko_project.electronic_board.entities.Announcement;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -38,21 +39,23 @@ public class User {
 	@Column(unique = true)
 	private String phone;
 
-	@ManyToMany(cascade={CascadeType.MERGE})
-	@JoinTable(name = "user_role_tbl", joinColumns = {@JoinColumn(name="user_id", referencedColumnName="id")},
-	inverseJoinColumns = {@JoinColumn(name="role_id", referencedColumnName="role_id")})
-	private List<Role> roles;
-
-	@ManyToOne(fetch = FetchType.LAZY, targetEntity = State.class)
+	@OneToOne(fetch = FetchType.LAZY, targetEntity = State.class)
 	@JoinColumn(name="state_id")
 	private State states;
 
-	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Status.class)
+	@OneToOne(fetch = FetchType.LAZY, targetEntity = Status.class)
 	@JoinColumn(name="status_id")
 	private Status statuses;
 
+	@ManyToMany(cascade={CascadeType.MERGE})
+	@JoinTable(name = "user_role_tbl", joinColumns = {@JoinColumn(name="user_id", referencedColumnName="id")},
+			inverseJoinColumns = {@JoinColumn(name="role_id", referencedColumnName="role_id")})
+	private List<Role> roles;
 
-
+	@ManyToOne(cascade={CascadeType.MERGE})
+	@JoinTable(name = "user_announcement_tbl", joinColumns = {@JoinColumn(name="user_id", referencedColumnName="id")},
+			inverseJoinColumns = {@JoinColumn(name="announcement_id", referencedColumnName="announcement_id")})
+	private Announcement announcement;
 	public void getState() {
 	}
 }
