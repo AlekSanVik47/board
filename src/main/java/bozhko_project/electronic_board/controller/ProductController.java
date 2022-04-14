@@ -43,7 +43,7 @@ public class ProductController {
         return ResponseEntity.ok("Продукт добавлен в базу");
     }
     @Operation(description = "Обновление продукта")
-    @PostMapping(value ="announcement/product/update-product/{productId}")
+    @PutMapping(value ="announcement/product/update-product/{productId}")
     public ResponseEntity<String> productUpdateController(@Parameter(description = "запрос на обновление продукта",required = true)
                                                               @RequestBody(required = false) ProductUpdateDTO request,
     @PathVariable("productId") Long productId){
@@ -52,7 +52,7 @@ public class ProductController {
     }
 
     @Operation(description = "Обновление названия")
-    @PostMapping(value ="announcement/product/update-product-name/{productId}")
+    @PutMapping(value ="announcement/product/update-product-name/{productId}")
     public ResponseEntity<String> productNameUpdateController(@Parameter(description = "запрос на обновление продукта",required = true)
                                                           @RequestBody(required = false) ProductUpdateDTO request,
                                                           @PathVariable("productId") Long productId){
@@ -60,7 +60,7 @@ public class ProductController {
         return ResponseEntity.ok("Название успешно обновлено");
     }
     @Operation(description = "Обновление изображения")
-    @PostMapping(value ="announcement/product/update-product-image/{productId}")
+    @PutMapping(value ="announcement/product/update-product-image/{productId}")
     public ResponseEntity<String> productImageUpdateController(@Parameter(description = "запрос на обновление продукта",required = true)
                                                               @RequestBody(required = false) ProductUpdateDTO request,
                                                               @PathVariable("productId") Long productId){
@@ -68,7 +68,7 @@ public class ProductController {
         return ResponseEntity.ok("Изображение успешно обновлено");
     }
     @Operation(description = "Обновление описания")
-    @PostMapping(value ="announcement/product/update-product-description/{productId}")
+    @PutMapping(value ="announcement/product/update-product-description/{productId}")
     public ResponseEntity<String> productDescriptionUpdateController(@Parameter(description = "запрос на обновление продукта",required = true)
                                                                @RequestBody(required = false) ProductUpdateDTO request,
                                                                @PathVariable("productId") Long productId){
@@ -76,7 +76,7 @@ public class ProductController {
         return ResponseEntity.ok("Описание успешно обновлено");
     }
     @Operation(description = "Изменение цены")
-    @PostMapping(value ="announcement/product/update-product-price/{productId}")
+    @PutMapping(value ="announcement/product/update-product-price/{productId}")
     public ResponseEntity<String> productPriceUpdateController(@Parameter(description = "запрос на обновление продукта",required = true)
                                                                      @RequestBody(required = false) ProductUpdateDTO request,
                                                                      @PathVariable("productId") Long productId){
@@ -118,4 +118,14 @@ public class ProductController {
         return ResponseEntity.ok(productService.getProductByProductNameService(productName));
 
     }
+/*    @ExceptionHandler(EntityNotFoundException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public final ResponseEntity<?> handleEntityNotFoundException(EntityNotFoundException exception)
+    {
+        Map<String, Object> errorAttributes = new LinkedHashMap();
+        errorAttributes.put("timestamp", LocalDateTime.now());
+        errorAttributes.put("status", HttpStatus.BAD_REQUEST);
+        errorAttributes.put("error", "Некорректный запрос!");
+        return new ResponseEntity<>(errorAttributes, HttpStatus.BAD_REQUEST);
+    }*/
 }

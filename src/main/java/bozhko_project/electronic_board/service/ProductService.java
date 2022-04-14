@@ -86,17 +86,17 @@ public class ProductService {
         productRepository.saveAndFlush(product);
     }
     public void productDescriptionUpdateService(ProductUpdateDTO dto, Long id) {
-        Product product = productMapper.productToUpdateDTO(dto, id);
+        Product product = productRepository.getById(id);;
         product.setDescription(dto.getDescription());
         productRepository.saveAndFlush(product);
     }
     public void productPriceUpdateService(ProductUpdateDTO dto, Long id) {
-        Product product = productMapper.productToUpdateDTO(dto, id);
+        Product product = productRepository.getById(id);;
         product.setPrice(dto.getPrice());
         productRepository.saveAndFlush(product);
     }
     public void productImageUpdateService(ProductUpdateDTO dto, Long id) {
-        Product product = productMapper.productToUpdateDTO(dto, id);
+        Product product = productRepository.getById(id);
         product.setImageId(dto.getImageId());
         productRepository.saveAndFlush(product);
     }

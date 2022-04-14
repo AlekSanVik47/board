@@ -18,8 +18,6 @@ public class SwaggerConfig {
     public OpenAPI springShopOpenAPI() {
 
         return new OpenAPI()
-
-
                 .addSecurityItem(new SecurityRequirement().addList("bearer"))
                 .components(new Components()
                         .addSecuritySchemes("bearer",

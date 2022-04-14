@@ -20,6 +20,8 @@ public class Announcement {
     @Column(name = "announcement_id")
     private Long id;
 
+    @Column(name = "title_ad")
+    private String titleAd;
 
     @OneToOne (fetch = FetchType.LAZY, targetEntity = Product.class)
     @JoinColumn(name="user_id")

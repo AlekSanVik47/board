@@ -1,0 +1,1 @@
+ALTER TABLE announcement_tbl ADD title_ad VARCHAR(255) NOT NULL;
