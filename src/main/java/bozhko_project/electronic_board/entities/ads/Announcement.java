@@ -31,4 +31,6 @@ public class Announcement {
     @OneToOne (fetch = FetchType.LAZY, targetEntity = Product.class)
     @JoinColumn(name="product_id")
     private Product productId;
+
+
 }
